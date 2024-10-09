@@ -1,0 +1,40 @@
+Como hacer un sandwich
+Abres el armario de arriba 
+Sacas un plato
+Dejas encima de la encimera el plato 
+Cierra el armario
+Abres la nevera 
+Sacas el jamon de pavo y el queso en lonchas
+Dejas encima de la encimera el queso en lonchas y jamon
+Cierras la nevera
+Abres el armario de abajo 
+Sacas el pan 
+Abres la Bolsa
+Sacas dos rebanadas de pan
+Colocalas encima del plato
+Cierras la bolsa 
+Guardas el pan de molde
+Cierras el Armario
+Coges una rebanada de jamon de pavo
+Separas las dos rebanadas de pan de molde, dejas una en la encimera y la otra en el plato
+Dejas la rebanada de jamon en la rebanada de pan del plato 
+Coges una rebanada de Queso 
+Deja la rebanada de queso encima del jamon de pavo
+Abres la nevera 
+Coges el Jamon de pavo y Queso
+los Dejas dentro 
+Cierras la nevera 
+Coges la rebanada de la encimera 
+Dejala encima de la rebanada de queso
+Conecta la Tostadora a la electricidad
+Abre la tostadora 
+Coge el Sandwich 
+dejalo dentro de la tostadora 
+Cierra la tostadora 
+Esperas a que se ponga de color verde la luz 
+Abres la tostadora 
+Coges tu sandwich
+Dejalo encima del plato
+Cortalo en diagonal
+Desconectas la tostadora de la electricidad
+y a disfrutar de tu Sandwich
