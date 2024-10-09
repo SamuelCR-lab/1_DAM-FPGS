@@ -41,7 +41,7 @@ void calcularAreaCirculo(){
 double area,radio;
 	printf("Introduce el radio del circulo: ");
 	scanf("%lf",&radio);
-	area= radio + radio + M_PI;
+	area= radio * radio * M_PI;
 	printf("El area del circulo es %lf\n",area);
 		
 }
@@ -55,33 +55,44 @@ double area;
 
 }
 
-double calcular_promedio_tres_num(double num1, double num2, double num3){
-return num1 + num2 + num3 / '3';//esto es lo que va a resultar cuan la funcion void promedio llame a la double calcular promedio
+double calcular_promedio_tres_num(double num1,double num2,double num3){
+return (num1+num2+num3/3);//esto es lo que va a resultar cuan la funcion void promedio llame a la double calcular promedio
 }
-double calcular_promedio_cuatro_num(double num1, double num2, double num3,double num4){
-return num1 + num2 + num3 + num4 / '4';
+double calcular_promedio_cuatro_num(double num1,double num2,double num3,double num4){
+return (num1+num2+num3+num4/4);
 }
 
-void promedio(){
-	int numero;
-	double num1;
-	double num2;
-	double num3;
-	double num4;
-	printf("¿De cuántos números quiere hacer el promedio? (2 o 3 o 4) : ");
-	scanf("%d",&numero);
-	if (numero == '2'){
+void calcular_promedio(){
+	int opcion;
+	int num1;
+	int num2;
+	int num3;
+	int num4;
+	printf("¿De cuántos números quiere hacer el promedio? (3 o 4) : ");
+	scanf("%d",&opcion);
+	if (opcion == '3'){
 	printf("Introduzca el primer número: ");
-	scanf("%lf",&num1);
+	scanf(" %d",&num1);
 	printf("Introduzca el segundo número: ");
-	scanf("%lf",&num1);
+	scanf(" %d",&num2);
+	printf("Introduzca el tercer número: ");
+	scanf(" %d",&num3);
+	printf("El promedio de %d, %d y %d es %lf ",num1,num2,num3,calcular_promedio_tres_num(num1,num2,num3));
+	}else if (opcion == '4'){
+	printf("Introduzca el primer número: ");
+	scanf(" %d",&num1);
+	printf("Introduzca el segundo número: ");
+	scanf(" %d",&num2);
+	printf("Introduzca el tercer número: ");
+	scanf(" %d",&num3);
+	printf("Introduzca el cuarto número: ");
+	scanf(" %d",&num4);
+	printf("El promedio de %d, %d, %d y %d es %lf",num1,num2,num3,num4,calcular_promedio_cuatro_num(num1,num2,num3,num4));
+	}else{
+	printf("Error al realizar la funcion calcular promedio");
+	}
+
 }
-}
-
-
-
-
-
 
 
 
@@ -89,46 +100,66 @@ void promedio(){
 int main (){
 	int area;
 	int opcion;
-	printf("Selecciona una opción : \n"); 
+	printf("Selecciona una opción : \n");
 	printf("1. Verificar si una letra es una vocal.\n");
 	printf("2. Calcular el área de una figura (círculo o cuadrado).\n");
 	printf("3. Calcular el promedio de 3 o 4 números.\n");
 	printf("4. Convertir una hora en formato de 24 horas a 12 horas.\n");
 	printf("5. Verificar si un número menor de 10 es primo.\n");
-	printf("6.Comparar tres números.\n");
-	printf("7. Salir.\n");
+	printf("6. Comparar tres números.\n");
+	printf("7. Salir.\n ");
 	scanf(" %d",&opcion);
-	switch (opcion){
+	switch (opcion) {
 		case 1:
-		letraVocal();
-		break;
-		case 2:
-		printf("Opcion: 2\n");
-		printf("Que figura deseas calcular (circulo=1, cuadrado=2)? : ");
-		scanf(" %d",&area);
-		if (area == 1){
-			calcularAreaCirculo();	
-		}else if (area == 2){
-			calcularAreaCuadrado();
-		}else 
-		printf("Error en la función calcular_area_figura\n");
-		case 3:
-		promedio();
-		break;
-		case 4:
+			letraVocal();
+			break;
 
-		break;
+		case 2:
+			printf("Opcion: 2\n");
+			printf("¿Que figura deseas calcular (circulo=1, cuadrado=2)? : ");
+			scanf(" %d",&area);
+				if (area == 1){
+					calcularAreaCirculo();	
+				}else if (area == 2){
+					calcularAreaCuadrado();
+				}else{ 
+				printf("Error en la función calcular_area_figura\n");
+				}
+			break;
+
+		case 3:
+			printf("El programa si funciona pero la funcion es una mierda");
+			calcular_promedio();
+			break;
+
+		case 4:
+			printf("El programa si funciona pero la funcion es una mierda");
+		
+			break;
+
 		case 5:
 
-		break;
+			printf("El programa si funciona pero la funcion es una mierda");
+			break;
+
 		case 6:
 
-		break;
+			printf("El programa si funciona pero la funcion es una mierda");
+			break;
+
 		case 7:
-		printf("Has salido\n");
-		break;
-	}
-	
-	
-return 0;
+			printf("Has salido\n");
+			break;
+		default:
+			if (opcion >= 7){
+		
+			printf("Has salido\n");
+			}
+			break;
+
+		}
+	return 0;
 }
+
+
+
