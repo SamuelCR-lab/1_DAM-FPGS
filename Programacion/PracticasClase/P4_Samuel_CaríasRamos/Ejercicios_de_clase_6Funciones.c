@@ -41,7 +41,7 @@ void calcularAreaCirculo(){
 double area,radio;
 	printf("Introduce el radio del circulo: ");
 	scanf("%lf",&radio);
-	area= radio + radio + M_PI;
+	area= radio * radio * M_PI;
 	printf("El area del circulo es %lf\n",area);
 		
 }
