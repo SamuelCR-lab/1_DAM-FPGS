@@ -56,21 +56,21 @@ double area;
 }
 
 double calcular_promedio_tres_num(double num1,double num2,double num3){
-return (num1+num2+num3/3);//esto es lo que va a resultar cuan la funcion void promedio llame a la double calcular promedio
+return (num1+num2+num3)/3;//esto es lo que va a resultar cuan la funcion void promedio llame a la double calcular promedio
 }
 double calcular_promedio_cuatro_num(double num1,double num2,double num3,double num4){
-return (num1+num2+num3+num4/4);
+return (num1+num2+num3+num4)/4;
 }
 
-void calcular_promedio(){
+void promedio(){
 	int opcion;
 	int num1;
 	int num2;
 	int num3;
 	int num4;
 	printf("¿De cuántos números quiere hacer el promedio? (3 o 4) : ");
-	scanf("%d",&opcion);
-	if (opcion == '3'){
+	scanf(" %d",&opcion);
+	if (opcion == 3){
 	printf("Introduzca el primer número: ");
 	scanf(" %d",&num1);
 	printf("Introduzca el segundo número: ");
@@ -78,7 +78,7 @@ void calcular_promedio(){
 	printf("Introduzca el tercer número: ");
 	scanf(" %d",&num3);
 	printf("El promedio de %d, %d y %d es %lf ",num1,num2,num3,calcular_promedio_tres_num(num1,num2,num3));
-	}else if (opcion == '4'){
+	}else if (opcion == 4){
 	printf("Introduzca el primer número: ");
 	scanf(" %d",&num1);
 	printf("Introduzca el segundo número: ");
@@ -109,42 +109,32 @@ int main (){
 	printf("6. Comparar tres números.\n");
 	printf("7. Salir.\n ");
 	scanf(" %d",&opcion);
-	switch (opcion) {
-		case 1:
+		switch (opcion){
+			case 1:
 			letraVocal();
-			break;
-
-		case 2:
+			case 2:
 			printf("Opcion: 2\n");
-			printf("¿Que figura deseas calcular (circulo=1, cuadrado=2)? : ");
+			printf("Que figura deseas calcular (circulo=1, cuadrado=2)? : ");
 			scanf(" %d",&area);
-				if (area == 1){
+			if (area == 1){
 					calcularAreaCirculo();	
 				}else if (area == 2){
-					calcularAreaCuadrado();
-				}else{ 
-				printf("Error en la función calcular_area_figura\n");
-				}
-			break;
-
-		case 3:
-			printf("El programa si funciona pero la funcion es una mierda");
-			calcular_promedio();
-			break;
-
+						calcularAreaCuadrado();
+					}else 
+			printf("Error en la función calcular_area_figura\n");
+			break;		
+			case 3:
+			promedio();	
 		case 4:
-			printf("El programa si funciona pero la funcion es una mierda");
 		
 			break;
 
 		case 5:
 
-			printf("El programa si funciona pero la funcion es una mierda");
 			break;
 
 		case 6:
 
-			printf("El programa si funciona pero la funcion es una mierda");
 			break;
 
 		case 7:
