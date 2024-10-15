@@ -99,12 +99,6 @@ void promedio(){
 
 
 
-
-
-
-
-
-
 int main (){
 	int area;
 	int opcion;
@@ -120,7 +114,6 @@ int main (){
 	switch (opcion){
 		case 1:
 		letraVocal();
-		break;
 		case 2:
 		printf("Opcion: 2\n");
 		printf("Que figura deseas calcular (circulo=1, cuadrado=2)? : ");
@@ -133,19 +126,24 @@ int main (){
 		printf("Error en la función calcular_area_figura\n");
 		case 3:
 		promedio();
-		break;
 		case 4:
 
-		break;
+			break;
 		case 5:
 
-		break;
+			break;
 		case 6:
 
-		break;
+			break;
 		case 7:
-		printf("Has salido\n");
-		break;
+			printf("Has salido\n");
+			break;
+		  default:
+                        if (opcion >= 7){
+
+                        printf("Has salido\n");
+                        }
+                        break;
 	}
 	
 return 0;
