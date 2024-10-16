@@ -56,10 +56,10 @@ double area;
 }
 
 double calcular_promedio_tres_num(double num1, double num2, double num3){
-return (num1+num2+num3/3);//esto es lo que va a resultar cuan la funcion void promedio llame a la double calcular promedio
+return (num1+num2+num3)/3;//esto es lo que va a resultar cuan la funcion void promedio llame a la double calcular promedio
 }
 double calcular_promedio_cuatro_num(double num1, double num2, double num3,double num4){
-return (num1+num2+num3+num4/4);
+return (num1+num2+num3+num4)/4;
 }
 
 void promedio(){
@@ -77,7 +77,6 @@ void promedio(){
 		scanf(" %d",&num2);
 		printf("Introduzca el tercer número: ");
 		scanf(" %d",&num3);
-
 		printf("El promedio de %d, %d y %d es = %lf ",num1,num2,num3,calcular_promedio_tres_num(num1,num2,num3));
        
 	}else if (numero == 4){
@@ -89,8 +88,7 @@ void promedio(){
 		scanf(" %d",&num3);
 		printf("Introduzca el cuarto número: ");
 		scanf(" %d",&num4);
-
-	printf("El promedio de %d, %d, %d y %d es = %lf ",num1,num2,num3,num4,calcular_promedio_cuatro_num(num1,num2,num3,num4));
+		printf("El promedio de %d, %d, %d y %d es = %lf ",num1,num2,num3,num4,calcular_promedio_cuatro_num(num1,num2,num3,num4));
 
 	}else{
 	printf("Error al calcaular la funcion promedio");
@@ -113,19 +111,20 @@ int main (){
 	scanf(" %d",&opcion);
 	switch (opcion){
 		case 1:
-		letraVocal();
+			letraVocal();
 		case 2:
-		printf("Opcion: 2\n");
-		printf("Que figura deseas calcular (circulo=1, cuadrado=2)? : ");
-		scanf(" %d",&area);
-		if (area == 1){
+			printf("Opcion: 2\n");
+			printf("Que figura deseas calcular (circulo=1, cuadrado=2)? : ");
+			scanf(" %d",&area);
+			if (area == 1){
 			calcularAreaCirculo();	
-		}else if (area == 2){
+			}else if (area == 2){
 			calcularAreaCuadrado();
-		}else 
-		printf("Error en la función calcular_area_figura\n");
+			}else 
+			printf("Error en la función calcular_area_figura\n");
+		
 		case 3:
-		promedio();
+			promedio();
 		case 4:
 
 			break;
@@ -140,12 +139,10 @@ int main (){
 			break;
 		  default:
                         if (opcion >= 7){
-
                         printf("Has salido\n");
                         }
                         break;
 	}
-	
 return 0;
 }
 
