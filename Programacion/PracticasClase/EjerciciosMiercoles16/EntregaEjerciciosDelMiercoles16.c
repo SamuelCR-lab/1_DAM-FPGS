@@ -24,7 +24,7 @@ int es_mayuscula(char letra){
 		printf("la letra %c no es mayúscula.\n",letra);
 		return 0;
 	}else{
-		printf("El caracter ingresado no es una letra");
+		printf("El caracter ingresado no es una letra\n");
 	}
 	return 0;
 }
@@ -49,7 +49,7 @@ int encontrar_maximo(int num1, int num2){
 double convertir_celsius_a_fahrenheit(double celsius){
 	double fahrenheit;//Declaramos la variable Fahrenheit para que la operacion de cambio de celsius a dicha unidad de medicion se realice como esta expresada debajo, con una formula extraida de internet.
 		fahrenheit = (celsius * 9/5)+32;
-	       	printf("La temperatura en Fahrenheit es %lf.",fahrenheit);	
+	       	printf("La temperatura en Fahrenheit es %lf.\n",fahrenheit);	
 	return 0;
 }
 void intercambiar_numero(){
@@ -59,7 +59,7 @@ void intercambiar_numero(){
 		scanf(" %d",&num2);
 		printf("Introduce el segundo número: ");//En este caso lo mismo que en el primer numero pero al contrario
 		scanf(" %d",&num1);
-		printf("Después de intercambiar, el primer número es %d, el segundo es %d.",num2,num2);
+		printf("Después de intercambiar, el primer número es %d, el segundo es %d.\n",num2,num2);
 }
 double calcular_potencia(double base, int exponente){
 	if (base == 0){
