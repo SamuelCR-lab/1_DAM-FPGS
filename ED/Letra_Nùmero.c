@@ -4,7 +4,7 @@
     char caracter;
       printf("Introduce un carácter cualquiera: ");
       scanf(" %c", &caracter);
-      if (caracter >= 0 && caracter <= 9){
+      if (caracter >= '0' && caracter <= '9'){
       printf("Es un número\n");
       }else if ((caracter >= 'A' && caracter <= 'Z')||(caracter >= 'a' && caracter <= 'z')){
       printf("Es una letra\n");
