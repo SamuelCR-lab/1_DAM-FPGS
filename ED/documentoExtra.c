@@ -9,5 +9,5 @@
     } else {
     printf("El número es impar\n");
     }
-return 0;' >> documentoExtra
+return 0;
 }
