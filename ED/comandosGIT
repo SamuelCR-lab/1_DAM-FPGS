@@ -1,0 +1,10 @@
+Comandos GIT locales:
+git init
+git add
+git commit -m
+git status
+git pull
+git push
+git branch
+git checkout
+git log
