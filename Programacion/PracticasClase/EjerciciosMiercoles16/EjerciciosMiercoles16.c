@@ -67,7 +67,11 @@ double calcular_potencia(double base, int exponente){
 	}else if (exponente == 0){
 		printf("Cualquier número con exponente 0 es 1.\n");	
 	}else {
-	return 1;//Lo intente realizar con base ^ exponente pero no existe como math.h 
+		while (exponente != 1){
+		exponente = exponente - 1;
+		base = base1+ base; 
+		}
+	return base;//Lo intente realizar con base ^ exponente pero no existe como math.h 
 	}
 }
 
