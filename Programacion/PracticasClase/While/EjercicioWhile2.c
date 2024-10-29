@@ -17,8 +17,7 @@ int main (){
 		resto = num/10;
 		printf("%d\n",resultado);
 		num = resto;
-		suma += resultado;
-
+		suma += resultado;//En esta funcion significa que la suma += significa que se realiza una suma del numero que esta en resultado y se guarda en suma hasta que acaba el bucle y se muestra en suma
 
 	}
 	printf("La suma de cada uno de los digitos es = %d\n",suma);
