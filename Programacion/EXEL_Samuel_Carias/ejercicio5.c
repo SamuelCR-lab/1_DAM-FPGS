@@ -15,7 +15,7 @@ int main(){
 	break;
 	}
 	} 
-	printf("La suma de los números ingresados es %d\n",suma);
+	printf("La suma de los números ingresados es %d.\n",suma);
 	
 return 0;
 }

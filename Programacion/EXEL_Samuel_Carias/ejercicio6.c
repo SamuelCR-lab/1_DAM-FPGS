@@ -5,15 +5,15 @@
 int main(){
 	int n1;
 	int comparacion;
-	comparacion = (n1 >= 1 && n1 <= 10);
+	comparacion = (n1 <= 10 && n1 >= 1);
 	do{
-	printf("Introduce números enteros: ");
-	scanf("%d",&n1);
-	if (n1 < 0 && n1 > 11){
-	printf("Número no válido\n");
+		printf("Introduce números enteros: ");
+		scanf("%d",&n1);
+		if (n1 < 1 && n1 > 10){ 
+			printf("Número no válido.\n");
 	} 
 	}while (comparacion);
-	printf("Has ingresado el número %d\n",n1);
+	printf("Has ingresado el número %d.\n",n1);
 
 return 0;
 }

@@ -12,28 +12,28 @@ int main(){
 	scanf("%d",&dia);
 	switch (dia){
 	case 1: 
-	printf("Hoy es Lunes\n");
+	printf("Hoy es lunes.\n");
 	break;
 	case 2: 
-	printf("Hoy es Martes\n");
+	printf("Hoy es martes.\n");
 	break;
 	case 3: 
-	printf("Hoy es Miércoles\n");
+	printf("Hoy es miércoles.\n");
 	break;
 	case 4: 
-	printf("Hoy es Jueves\n");
+	printf("Hoy es jueves.\n");
 	break;
 	case 5: 
-	printf("Hoy es Viernes\n");
+	printf("Hoy es viernes.\n");
 	break;
 	case 6: 
-	printf("Hoy es Sabado\n");
+	printf("Hoy es sabado.\n");
 	break;
 	case 7: 
-	printf("Hoy es Domingo\n");
+	printf("Hoy es domingo.\n");
 	break;
 	default:
-	printf("Número no válido\n");
+	printf("Número no válido.\n");
 	break;
 	}
 

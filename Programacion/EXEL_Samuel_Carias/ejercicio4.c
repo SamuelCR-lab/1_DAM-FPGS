@@ -10,6 +10,6 @@ int main(){
 	for(int i = 0; i <= n; i++){
 	suma += i;
 	} 
-	printf("La suma de los primeros %d números es %d\n", n,suma);
+	printf("La suma de los primeros %d números es %d.\n", n,suma);
 return 0;
 }
