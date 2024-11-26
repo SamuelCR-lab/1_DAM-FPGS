@@ -59,6 +59,11 @@ void inicializar(Estudiante * estudiante_a_rellenar, char * nombre, int edad, fl
 	strcpy(estudiante_a_rellenar->nombre,nombre);
 
 }
+// Tiene que recibir un puntero a estudiante porque va a modificar la edad del estudiante cuando 
+// cumpla anios esto se hace llamando al acampo edad dentro del puntero tipo estudiante que  
+void cumpleanios(Estudiante * cumpleanero){
+	cumpleanero->edad++;
+}
 
 
 int main(){
@@ -75,7 +80,7 @@ int main(){
 	printf("¿Cuántos estudiantes desea inicialiazar?: ");
 	scanf("%d",&num_estudiantes);
 
-	for (int i = 0; i < num_estudiantes; i++
+	for (int i = 0; i < num_estudiantes; i++){
 		printf("Introduce la edad: ");
 		scanf("%d",&edad);
 		printf("Introduce la nota: ");
@@ -83,7 +88,11 @@ int main(){
 		printf("Introduce el nombre: ");
 		scanf("%s",nombre);
 		inicializar(listado + i,nombre,edad,nota); 
-
+	}
+	printf("Edad antigua de %s: %d\n",listado[0].nombre,listado[0].edad);
+	//listado. y listado-> son lo mismo porque significa que listado flecha accede a la direccion de memoria de listado edad
+	cumpleanios(&listado[0]/*Direccion de memoria donde esta el array listado y apunta a ahi*/);
+	printf("Edad nueva: %d\n",listado[0].edad);
 
 return 0;
 }
