@@ -63,6 +63,7 @@ void inicializar(Estudiante * estudiante_a_rellenar, char * nombre, int edad, fl
 // cumpla anios esto se hace llamando al acampo edad dentro del puntero tipo estudiante que  
 void cumpleanios(Estudiante * cumpleanero){
 	cumpleanero->edad++;
+	//En las funciones hay que trabajar con los punteros osea direcciones de memoria por lo que se utilizaran las flechas en vez de . que se usara en el main solamente porque se hace con variables fijas no direcciones de memoria
 }
 
 
