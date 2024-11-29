@@ -10,34 +10,57 @@
 #define MAX_TITLE 80
 #define MAX_AUTOR 50
 
-enum Gender {
+typedef enum {
 	FICTION,
 	NON_FICTION,
 	POETRY,
 	THEATER,
 	ESSAY,
-};
+}Gender;
 
-
-struct Book{
+typedef struct{
 	int ID;
  	char title[MAX_TITLE];
  	char author[MAX_AUTOR];
  	float price;
- 	enum Gender gender;
+ 	Gender gender;
  	int capacity_available;
-};
+}Book;
+
 void ShowLibrary(const Book * print_book){
 	printf("ID: %d, ",print_book->ID);
 	printf("Titulo: %s, ",print_book->title);
 	printf("Autor: %s, ",print_book->author);
 	printf("Precio: %f, ",print_book->price);
-	printf("Categoria: %s, ",print_book->gender);
+	printf("Categoria: %d, ",print_book->gender);
 	printf("Disponibilidad: %d.\n",print_book->capacity_available);
 }
+void IncreaseCapacity(book_to_increase * increased_book, int increase){
+       
+       
+
+}
+
+
+
+void Search_Book(int Search){
+
+       --Search; 
+       if (Search >= 0 && Search <= 40){
+              ShowLibrary(&books[Search]);
+       }else{
+              printf("Error no existe ese ID introducido\n");
+       }
+       
+}
+
 
  int main(){
- 		Book books [40] = {
+       char SiNo;
+       int IDSearch_Book = 0;
+       int increase = 0;
+       int * book_increase = IDSearch_Book;
+ 		Book books[40] = {
         {1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10},
         {2, "1984", "George Orwell", 12.49, FICTION, 5},
         {3, "The Great Gatsby", "F. Scott Fitzgerald", 10.99, FICTION, 8},
@@ -79,9 +102,34 @@ void ShowLibrary(const Book * print_book){
         {39, "The Republic", "Plato", 16.00, ESSAY, 6},
         {40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ESSAY, 10}
     }; 
-    for(int i = 0; i < 40; i++){
-    ShowLibrary(&books[i]);
-	}
+       //Usamos este bucle for para mostrar todos los elementos de array books
+       //que al ser de 40 espacios de memoria reservada el bucle y el array comienzan en 0 hasta 39
+       //para que sean los 40 espacios de memoria reservada.
+       for(int i = 0; i < 40; i++){
+              ShowLibrary(&books[i]);
+	      }
+       printf("¿Quieres buscar un libro? s(Sí) o n(no): ");
+       scanf("%c",&SiNo);
+       if (SiNo == 's'){
+              printf("¿ID del libro a buscar? del (1 al 40): ");
+              scanf("%d",&IDSearch_Book);
+              Search_Book(IDSearch_Book);
+       }
+         printf("¿Quieres aumentar la cantidad del libro anterior? s(Sí) o n(no): ");
+       scanf("%c",&SiNo);
+       if (SiNo == 's'){
+              printf("¿Cuanto quieres aumentar el inventario del libro anterior: ");
+              scanf("%d",&increase);
+              IncreaseCapacity(&book_increase, increase);
+       }
+
+
+       
+
+
+
+
+
 
  	return 0;
  }
