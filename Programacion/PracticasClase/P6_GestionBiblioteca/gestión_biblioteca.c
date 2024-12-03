@@ -35,31 +35,48 @@ void ShowLibrary(const Book * print_book){
 	printf("Categoria: %d, ",print_book->gender);
 	printf("Disponibilidad: %d.\n",print_book->capacity_available);
 }
-void IncreaseCapacity(book_to_increase * increased_book, int increase){
+//void IncreaseCapacity(book_to_increase * increased_book, int increase){
        
        
 
+//}
+
+
+
+void Search_ID(Book * IDSearch_Book){
+       int IDBook;
+       char SiNo;
+              printf("¿Quieres buscar un libro? s(Sí) o n(no): ");
+              scanf("%c",&SiNo);
+                 if (SiNo == 's'){
+              printf("¿ID del libro a buscar? del (1 al 40): ");
+              scanf("%d",&IDBook);
+              if (IDBook >= 0 && IDBook <= 40){
+              for(int i = 0; i < 40; i++){
+                     if (IDSearch_Book->ID == --IDBook){
+                            ShowLibrary(IDSearch_Book);
+                            }
+                     }
+              }else{
+              printf("Error no existe ese ID introducido\n");
+              }
+       }         
+       
 }
 
+void Search_Gender(int Search){
 
-
-void Search_Book(int Search){
-
-       --Search; 
-       if (Search >= 0 && Search <= 40){
-              ShowLibrary(&books[Search]);
+      --Search; 
+    if (Search >= 0 && Search <= 40){
+           ShowLibrary(books[Search]);
        }else{
-              printf("Error no existe ese ID introducido\n");
-       }
+          printf("Error no existe ese ID introducido\n");
+ }
        
 }
 
 
  int main(){
-       char SiNo;
-       int IDSearch_Book = 0;
-       int increase = 0;
-       int * book_increase = IDSearch_Book;
  		Book books[40] = {
         {1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10},
         {2, "1984", "George Orwell", 12.49, FICTION, 5},
@@ -108,27 +125,8 @@ void Search_Book(int Search){
        for(int i = 0; i < 40; i++){
               ShowLibrary(&books[i]);
 	      }
-       printf("¿Quieres buscar un libro? s(Sí) o n(no): ");
-       scanf("%c",&SiNo);
-       if (SiNo == 's'){
-              printf("¿ID del libro a buscar? del (1 al 40): ");
-              scanf("%d",&IDSearch_Book);
-              Search_Book(IDSearch_Book);
-       }
-         printf("¿Quieres aumentar la cantidad del libro anterior? s(Sí) o n(no): ");
-       scanf("%c",&SiNo);
-       if (SiNo == 's'){
-              printf("¿Cuanto quieres aumentar el inventario del libro anterior: ");
-              scanf("%d",&increase);
-              IncreaseCapacity(&book_increase, increase);
-       }
-
-
-       
-
-
-
-
+              Search_ID(&books[0]);
+              Search_Gender ();
 
 
  	return 0;
