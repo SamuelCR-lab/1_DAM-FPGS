@@ -9,7 +9,7 @@
 
 #define MAX_TITLE 80
 #define MAX_AUTOR 50
-
+#define MAX_STOCK 40
 typedef enum {
 	FICTION,
 	NON_FICTION,
@@ -43,18 +43,18 @@ void ShowLibrary(const Book * print_book){
 
 
 
-void Search_ID(Book * IDSearch_Book){
+void Search_ID(const Book * IDSearch_Book){
        int IDBook;
        char SiNo;
               printf("¿Quieres buscar un libro? s(Sí) o n(no): ");
               scanf("%c",&SiNo);
-                 if (SiNo == 's'){
-              printf("¿ID del libro a buscar? del (1 al 40): ");
-              scanf("%d",&IDBook);
+              if (SiNo == 's'){
+              	printf("¿ID del libro a buscar? del (1 al 40): ");
+              	scanf("%d",&IDBook);
               if (IDBook >= 0 && IDBook <= 40){
               for(int i = 0; i < 40; i++){
-                     if (IDSearch_Book->ID == --IDBook){
-                            ShowLibrary(IDSearch_Book);
+                     if (IDSearch_Book[i].ID == --IDBook){
+                            ShowLibrary(&IDSearch_Book[i]);
                             }
                      }
               }else{
@@ -64,20 +64,20 @@ void Search_ID(Book * IDSearch_Book){
        
 }
 
-void Search_Gender(int Search){
-
-      --Search; 
-    if (Search >= 0 && Search <= 40){
-           ShowLibrary(books[Search]);
-       }else{
-          printf("Error no existe ese ID introducido\n");
- }
+//void Search_Gender(int Search){
+//
+ //     --Search; 
+//    if (Search >= 0 && Search <= 40){
+//           ShowLibrary(books[Search]);
+//       }else{
+//          printf("Error no existe ese ID introducido\n");
+// }
        
-}
+//}
 
 
  int main(){
- 		Book books[40] = {
+ 		Book books[MAX_STOCK] = {
         {1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10},
         {2, "1984", "George Orwell", 12.49, FICTION, 5},
         {3, "The Great Gatsby", "F. Scott Fitzgerald", 10.99, FICTION, 8},
@@ -125,8 +125,8 @@ void Search_Gender(int Search){
        for(int i = 0; i < 40; i++){
               ShowLibrary(&books[i]);
 	      }
-              Search_ID(&books[0]);
-              Search_Gender ();
+              Search_ID(&books[39]);
+             // Search_Gender ();
 
 
  	return 0;
