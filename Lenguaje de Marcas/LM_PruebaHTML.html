@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Mi primera pagina web</title>
+        <meta charset="utf8" name="theme-color" content="red">
+
+    </head>
+    <body>
+        <!--Etiquetas de texto -->
+        <h1>Bienvenido a mi pagina web</h1>
+        <h2>subtitulo</h2>
+        <h3>subsubtitulo</h3>
+        <p><strong>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <mark>in sint expedita fugiat</mark> , obcaecati deleniti veniam delectus! Excepturi accusamus mollitia 
+            ad quod magnam in laboriosam, ratione necessitatibus odio perferendis quisquam.</strong></p>
+            <p><em>Lorem ipsum, <u>dolor sit amet</u> adipisicing elit. Sed libero quidem tempore perferendis, <s> dicta quod</s>, necessitatibus laboriosam esse officia
+                 maiores et earum? Vitae corrupti cumque reprehenderit ea dignissimos iusto.</em></p>
+        <cite>Harry potter y la piedra filosofal</cite> <!--para nombrar obras -->
+        <p>Harry Potter dijo:<q>"Voldermort esta aqui"</q></p>
+        <h3>Subindice y superindice</h3>
+        <p>2<sup>2</sup></p><!--para exponente se usa sup -->
+        <p>x<sub>1</sub></p><!--para un subindice se usa sub -->
+        <p>Esta es la clase de <dfn>lenguaje de marcas</dfn> <abbr>LM</abbr></p><!--abbr para decir es que es una abreviatura y dfn que es la definicion de algo -->
+        <section>
+        <h2>Listas</h2><!--para las listas numeradas usamos el ol y li  -->
+        <ol>
+            <li>1 itenm</li>
+            <li>2 itenm</li>
+            <li>3 itenm</li>
+        </ol>
+        <h3>Lista no numerada</h3><!--para las listas numeradas usamos el ul y li-->
+        <ul>
+            <li>1 itenm</li>
+            <li>2 itenm</li>
+            <li>3 itenm</li>
+        </ul> 
+         </section>
+        <h3>Listas Multinivel</h3><!--Esta lista es para combinar las listas numeradas ol y no numeras ul-->
+        <ol type="I" start="3" reversed>
+            <section>
+                <h2>Imagenes</h2>
+            <img src="C:\Users\Dam\Documents\DAM\M04 - Lenguaje de marcas y sistemas de gestión de\GoldenFacherito.jpg" width="400" height="300" align="left">
+            <p><img src="https://cdn2.mediotiempo.com/uploads/media/2021/10/22/real-madrid-comenzo-escribir-historia.jpg" width="800" height="600" align="center"></p>
+            <p><a href="https://www.realmadrid.com/es-ES" target="_blank">Real Madrid</a></p>
+            <a href="#">Listas</a>
+            <a href="#lista" target="_blank">Listas Multinivel</a>
+            </section>
+            <section>
+            <h2>Multimedia</h2>
+            <picture>
+            <source media="(width < 2000px)" srcset="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShNR04V3jSC35b9tqOVrKUQyz8lCh2u1e-iw&s">
+            <img src="GoldenFacherito.jpg" alt="Imagen">
+            </picture>
+            <video src="C:\Users\Dam\Downloads\Bocadillo de Chorizo Messi.mp4#t=2" width="600" height="600" autoplay muted loop controls playinline ></video><!--#t= es para poner un inicio de el video en un segundo especifico solo funciona con segundos-->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/K_veYZYk1wM?si=zE9Psz9yeIH1_Fk7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <audio src="C:\Users\Dam\Halloween.mp3" controls autoplay loop preload="metadata"></audio><!-- "none" "metadata" son para determinar si el video/audio no carguen (none) o carguen (metadata) antes de la pagina web que se despliegue-->
+            </section>
+            <section>
+                <h2>Tablas</h2>
+                <div style="text-align: center;">
+                <table border="1px" align="center" >
+                    <!--Fila es tr-->
+                    <tr>
+                        
+                        <th scope="rowgroup">Columna1</th><!--Fila es th cuando la primera columna es el encabezado-->
+                        <th>Columna2</th>
+                    </tr>
+                    <!--Columna es td-->
+                    <tr>
+                        
+                        <td colspan="2">Columna1</td><!--La funcion colspan es para que una fila ocupe "los espacios que quiero" que se encuentrenm entre comillas-->
+                        
+                    </tr>
+                    <!--Fila es tr-->
+                    <tr>
+                        
+                        <td rowspan="2">Columna1</td><!--La funcion rowpan es para que una casilla ocupe "los espacios que quiero" que se encuentren entre comillas-->
+                        <td>Columna2</td>
+                    </tr>
+                    <tr>
+                        
+
+                        <td>Columna2</td>
+                    </tr>
+                    <tfoot>
+                        <tr>
+                            <td>Columna2</td>
+                        </tr>
+                    </tfoot>
+                    <caption>Ejemplo de tabla</caption>
+                </table>
+                </div>
+            </section>
+            <li>item 1</li>
+            <li>item 2
+                <ul>
+                     <li>elemento 1</li>
+                     <li>elemento 2</li>
+                </ul>
+            </li>
+    
+
+        <section>
+            <h2>Formuelarios</h2>
+            <form style="formulario1" method="" action="">
+                <p>Nombre: <input type="text" name="nombre" required></p>
+                <p>Correo: <input type="email" name="correo"></p>
+                <p>Telefono: <input type="tel" name="telefono"></p>
+                <p>Contraseña: <input type="password" name="contarseña"></p>
+                <p>Pagina web: <input type="url" name="pagina" placeholder="https://salesianosdosa.com/"></p>
+                <input type="hidden" name="oculto" value="12">
+                <p>Edad: <input type="range" name="edad" min="0" max="100"></p>
+                <p>Edad: <input type="number" name="edad" min="0" max="100"></p>
+                <p>Fecha: <input type="date" name="fecha" min="2024-01-01" max="2024-12-31"></p>
+                <p>Mes: <input type="month" name="mes"></p>
+                <p>Semana: <input type="week" name="semana"></p>
+                <p>Hora: <input type="time" name="hora"></p>
+                <p>Fecha y hora: <input type="datetime-local" name="fechahora"></p>
+                
+                <p>Opciones (checkbox): ¿Que te gusta más?</p>
+                <p><input type="checkbox" name="opcion1" value="piscina">Piscina</p>
+                <p><input type="checkbox" name="opcion2" value="campo" checked>Campo</p>
+                <p><input type="checkbox" name="opcion3" value="playa">Playa</p>
+                <p>Opciones (radio): ¿Que te gusta más?</p>
+                <p><input type="radio" name="opcion1" value="piscina">Piscina</p>
+                <p><input type="radio" name="opcion2" value="campo" checked>Campo</p>
+                <p><input type="radio" name="opcion3" value="playa">Playa</p>
+                <p>Opciones (radio): ¿Que te gusta más?</p>
+                <select>
+                <p></p>
+                    <optgroup label="categoria1">
+                    <option value="piscina">Piscina</option>
+                    <option value="campo">Campo</option>
+                    <option value="playa">Playa</option>
+                    </optgroup>
+                    <optgroup label="categoria2">
+                    <option value="parque">Parque</option>
+                    <option value="rio">Rio</option>
+                    </optgroup>
+                    <input type="color" value="">
+                    <p><textarea name="texto" cols="10" rows="10" placeholder="Escribe aqui"></textarea></p>
+                    <p></p><meter min="0" max="50" value="40" low="10" high="40"></meter></p>
+                    <p><progress min="0" max="50"></progress></p>
+                </select>
+                <input type="submit" value="Aceptar/Enviar">
+                <input type="reset" value="Borrar">
+                <button disabled>Botón TONTO</button>
+            </form>
+
+        </section>
+        <footer><p>Pie de pagina</p></footer>
+        </body>
+</html>

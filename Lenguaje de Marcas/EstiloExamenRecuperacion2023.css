@@ -1,0 +1,91 @@
+body, html{
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+.Caja1{
+    font-family: Helvetica, sans-serif;
+    color:white;
+    background-color: red;
+    height: 40%;
+
+    
+}
+.NombreDelAlumno{
+    text-align: top;
+    background-color: orange;
+    height: 50%;
+    width: 40%;
+    padding: 30px;
+}
+.ExamenDeRecuperación{
+    background-color: blue;
+    position: absolute;
+    height: 10%;
+    width: 40%;
+    top: 10%;
+    left: 10%;
+    padding: 30px;
+    
+
+}
+.Caja2{
+    background-color: rgb(248, 57, 216);
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    grid-gap: 10px;
+    padding: 4px;
+}
+.Blanca1{
+    background-color: white;
+    grid-column: 1/3;
+    grid-row: 1;
+}
+.Blanca2{
+    background-color: white;
+    grid-column: 3;
+    grid-row: 1;
+    
+}
+.Blanca3{
+    background-color: white;
+    grid-column: 1/3;
+    grid-row: 2;
+    
+}
+.Blanca4{
+    background-color: white;
+    grid-column: 3;
+    grid-row: 2;
+    
+}
+.Blanca5{
+    background-color: white;
+    grid-column: 1/3;
+    grid-row: 3;
+    
+}
+
+.Caja3{
+    background-color: aqua;
+    display: grid;
+    grid-template-rows: repeat(1,1fr);
+    grid-template-columns: repeat(3,1fr);
+    height: 40%;
+}
+.FormularioTabla{
+    background-color: green;
+    grid-column: 3;
+    grid-gap bottom: 3%;
+}
+.Lista{
+    background-color: yellow;
+    grid-column: 1;
+    width: 20%;
+    grid-gap bottom: 10%;
+}
+ul{
+    margin-top: 0px;
+}

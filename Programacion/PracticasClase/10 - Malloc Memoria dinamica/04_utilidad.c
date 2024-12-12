@@ -30,9 +30,7 @@ int main() {
 
 	for (int i = n, valor = 0; i < p; i++){
 		arr[i] = valor;
-
 		arr_ampliado[i] = 2*(i-n)+1;
-
 	}
 	for (int i = 0; i < p;i++){
 		

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><title>EJERCICIOS DE HTML-Formularios</title>
+        <meta charset="utf8" name="theme-color" content="red">
+        <h1>FORMULARIOS</h1>
+    </head>
+    <body>
+        <h3>1. Formulario de Registro Básico</h3>
+            <form style="formulario" action="" method="">
+            <p>Nombre: <input type="text" id="nombre" name="nombre" required></p>
+            <p>Apellido: <input type="text" id="apellido" name="apellido" required></p>
+            <p>Correo electrónico: <input type="email" id="email" name="email" required></p>
+            <p>Contraseña: <input type="password" id="password" name="password" required></p>
+            <p>Confirmar contraseña: <input type="password" id="confirm_password" name="confirm_password" required></p>
+            </form>
+        <h3>2. Formulario de Contacto</h3>
+            <form style="formulario" action="" method="">
+            <p>Nombre: <input type="text" id="nombre" name="nombre" required></p>
+            <p>Correo electrónico: <input type="email" id="email" name="email" required></p>
+            <p>Asunto: <input type="text" id="asunto" name="asunto" required></p>
+            <p>Mensaje: <textarea id="mensaje" name="mensaje" rows="5" required></textarea></p>
+            
+            </form>
+        <h3>3. Encuesta Simple</h3>
+          <form style="formulario" action="" method="">
+            <p>¿Cuál es tu color favorito?</p>
+            <p><label><input type="radio" name="color" value="rojo"> Rojo</label>
+            <label><input type="radio" name="color" value="verde"> Verde</label>
+            <label><input type="radio" name="color" value="azul"> Azul</label>
+            <label><input type="radio" name="color" value="amarillo"> Amarillo</label></p>
+            
+            <p>¿Qué frutas te gustan?</p>
+            <p><label><input type="checkbox" name="frutas" value="manzana"> Manzana</label>
+            <label><input type="checkbox" name="frutas" value="platano"> Plátano</label>
+            <label><input type="checkbox" name="frutas" value="naranja"> Naranja</label>
+            <label><input type="checkbox" name="frutas" value="uva"> Uva</label></p>
+          </form>
+          <h3>4. Formulario de Reserva</h3>
+          <form style="formulario" action="" method="">
+            <p>Nombre: <input type="text" id="nombre" name="nombre" required></p>
+            <p>Número de personas: <input type="number" id="personas" name="personas" required></p>
+            <p>Fecha de la reserva: <input type="date" id="fecha" name="fecha" required></p>
+            <p>Hora de la reserva: <input type="time" id="hora" name="hora" required></p>
+          </form>
+          <h3>5. Formulario de Feedback</h3>
+          <form style="formulario" action="" method="">
+            <p>Nombre: <input type="text" id="nombre" name="nombre" required></p>
+            <p>Correo electrónico: <input type="email" id="email" name="email" required></p>
+            <p>Calificación: <input type="range" id="calificacion" name="calificacion" min="1" max="5"></p>
+            <p>Comentarios: <textarea id="comentarios" name="comentarios" rows="4" required></textarea></p>
+          </form>
+          <h3>6. Formulario con Validación</h3>
+          <form style="formulario" action="" method="">
+                <p>Nombre: <input type="text" id="nombre" name="nombre" required></p>
+                <p>Correo electrónico: <input type="email" id="email" name="email" required></p>
+        
+             <label><input type="checkbox" name="terminos" required> Acepto los términos y condiciones</label><br>
+        
+            <button type="submit">Suscribirse/Enviar</button>
+            </form>
+            <h3>7. Realiza los siguientes formularios</h3>
+            <form style="formulario" action="" method="">
+                <!-- Lista desplegable múltiple -->
+                <label for="velocidad">Velocidad:</label>
+                <select id="velocidad" name="velocidad" multiple>
+                  <option value="100_mbits">100 Mbits</option>
+                  <option value="1000_mbits">1000 Mbits</option>
+                </select><br>
+              
+                <!-- Cuadros de texto -->
+                <p>DNI: <input type="text" id="dni" name="dni"></p>
+                <p>Nombre: <input type="text" id="nombre" name="nombre" required></p>
+                <p>Apellido: <input type="text" id="apellido" name="apellido" required></p>
+                <p>Email: <input type="email" id="email" name="email" required></p>
+              
+                <!-- Selector de color -->
+                <p>Color: <input type="color" id="color" name="color"></p>
+              
+                <!-- Textarea -->
+                <p>Comentario: <textarea id="comentario" name="comentario" rows="10" cols="49">Por favor, escriba aquí</textarea></p>
+              
+                <!-- Checkboxes para procesador -->
+                <p>Procesador:</p>
+                <label><input type="checkbox" name="procesador" value="procesadoramd"> AMD</label>
+                <label><input type="checkbox" name="procesador" value="procesadorintel_i5"> Intel i5</label>
+                <label><input type="checkbox" name="procesador" value="procesadorintel_i7"> Intel i7</label><br>
+              
+                <!-- Control de hora -->
+                <p>Hora: <input type="time" id="hora" name="hora"></p>
+              
+                <!-- Radiobuttons para red -->
+                <p>Red:</p>
+                <label><input type="radio" name="red" value="red2g"> 2G</label>
+                <label><input type="radio" name="red" value="red3g"> 3G</label>
+                <label><input type="radio" name="red" value="red4g"> 4G</label><br>
+              
+                <!-- Control para elegir archivos -->
+                <p>Subir archivo: <input type="file" id="archivo" name="archivo"></p>
+              
+                <!-- Checkboxes para asignaturas -->
+                <p>Asignaturas:</p>
+                <label><input type="checkbox" name="asignatura" value="asignaturahistoria"> Historia</label>
+                <label><input type="checkbox" name="asignatura" value="asignaturageografia"> Geografía</label>
+                <label><input type="checkbox" name="asignatura" value="asignaturalengua"> Lengua</label>
+                <label><input type="checkbox" name="asignatura" value="asignaturamatematicas"> Matemáticas</label><br>
+              
+                <!-- Textarea extra -->
+                <p>Texto adicional: <textarea id="texto_extra" name="texto_extra" rows="10" cols="49">Inserte aqui el texto</textarea></p>
+                <button type="submit">Enviar</button>
+              </form>
+              
+    </body>
+    </html>
