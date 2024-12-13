@@ -59,11 +59,11 @@ A
 
     </div>
     <div class="FormularioTabla">
-<table border="1px">
+<table>
     <form action="index.html" method="post">
     <tr>
         <td>Nombre: </td>
-        <td><input type="text" name="Nombre">  F.Nac.: <input type="text" name="Fecha de Nacimiento">  DNI: <input type="text" name="DNI"></td>
+        <td><input type="text" name="Nombre">  Fecha_de_Nacimiento: <input type="text" name="Fecha_de_Nacimiento">  DNI: <input type="text" name="DNI"></td>
     </tr>
     <tr>
         <td>Apellidos: </td>
@@ -71,11 +71,11 @@ A
     </tr>
     <tr>
         <td>Calle y número: </td>
-        <td><input type="text" name="Calle y número"></td>
+        <td><input type="text" name="Calle_y_número"></td>
     </tr>
     <tr>
         <td>Código Postal: </td>
-        <td><input type="text" name="Código Postal"> Ciudad: <input type="text"></td>
+        <td><input type="text" name="Código_Postal"> Ciudad: <input type="text" name="ciudad"></td>
     </tr>
     <tr>
         <td>Provincia: </td>
@@ -83,11 +83,18 @@ A
     </tr>
     <tr>
         <td>Opción: </td>
-        <td>Escoja una opción</td>
+        <td>Escoja una opción
+            <select>
+                <option value="opcion1">Opcion_1</option>
+                <option value="opcion2">Opcion_2</option>
+                <option value="opcion3">Opcion_3</option>
+                <option value="opcion4">Opcion_4</option>
+            </select>
+        </td>
     </tr>
     <tr>
         <td>Comentarios Personales: </td>
-        <td><input type="text" name="Comentarios Personales"></td>
+        <td><textarea type="text" name="Comentarios_Personales" cols="55"></textarea></td>
     </tr>
     <tr>
         <td>Pulse aquí: </td>

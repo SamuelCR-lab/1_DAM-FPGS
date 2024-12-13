@@ -1,6 +1,14 @@
+body, html{
+    margin: 0%;
+    padding: 0%;
+}
+h1{
+    color: blue;
+}
 #caja1{
     background-color: yellow;
     display: grid;
+    padding-top: 0%;
 }
 #caja2{
     background-color: pink;

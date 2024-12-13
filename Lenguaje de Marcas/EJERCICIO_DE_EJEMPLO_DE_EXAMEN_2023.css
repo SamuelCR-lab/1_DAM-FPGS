@@ -1,0 +1,114 @@
+body, html{
+margin: 0%;
+padding: 0%;
+height: 100%;
+width: 100%;
+}
+.CajaPrincipal{
+    width: 100%;
+    height: 90%;
+    background-color: blue;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1%;
+    
+}
+.CajaIzquierda{
+    display: grid;
+    flex: 1;
+    padding: 1px;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+
+
+}
+.CajaDerecha{
+    display: grid;
+    flex: 1;
+    padding: 1px;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+
+}
+.CajaVerde1{
+    margin: 10px;
+    font-family: Helvetica, sans-serif;
+    background-color: greenyellow;
+    grid-column-start: 1;
+	grid-column-end: 3;
+    
+    
+}
+.CajaVerde2{
+    margin: 10px;
+    font-family: Helvetica, sans-serif;
+    background-color: greenyellow;
+    grid-column-start: 1;
+	grid-column-end: 3;
+    
+
+}
+.CajaAmarilla1{
+    margin: 10px;
+    font-family: Arial, sans-serif;
+    background-color: yellow;
+}
+.CajaAmarilla2{
+    margin: 10px;
+    font-family: Arial, sans-serif;
+    background-color: yellow;
+    
+}
+.CajaAmarilla3{
+    margin: 10px;
+    font-family: Arial, sans-serif;
+    background-color: yellow;
+}
+.li1{
+    list-style-type: circle;
+}
+.li2{
+    list-style-type: square;
+}
+.li3{
+    list-style-type: upper-alpha;
+}
+.li4{
+    list-style-type: upper-roman;
+}
+.CajaAmarilla4{
+    margin: 10px;
+    font-family: Arial, sans-serif;
+    background-color: yellow;
+}
+.CajaAmarilla5{
+    margin: 10px;
+    font-family: Arial, sans-serif;
+    background-color: yellow;
+}
+.CajaAmarilla6{
+    margin: 10px;
+    font-family: Arial, sans-serif;
+    background-color: yellow;
+}
+.CajaAzul{
+    margin: 10px;
+    background-color: rgb(82, 193, 245);
+    grid-column-start: 1;
+	grid-column-end: 3;
+}
+table{
+    border: 1px solid black;
+}
+td, tr{
+    border: 1px solid black;
+}
+.pie{
+    width: auto;
+    height: auto;
+    background-color: rgb(250, 6, 250);
+    text-align: center;
+}

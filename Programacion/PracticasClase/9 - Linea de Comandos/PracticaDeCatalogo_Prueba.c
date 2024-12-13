@@ -23,7 +23,9 @@ typedef struct{
     Gender gender;
     int capacity_available;
 }Book;
-
+// argc: numero de argumentos recibidos recibidos
+// argv: array de cadenas de texto
+// argv = 0 es el nombre del programa siempre por lo 
 int main(int argc, char ** argv){//ARGC (argument count) 
  		Book books[MAX_STOCK] = {
         {1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10},
@@ -68,18 +70,33 @@ int main(int argc, char ** argv){//ARGC (argument count)
         {40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ESSAY, 10}
     }; 
 
-
-    
-       //Usamos este bucle for para mostrar todos los elementos de array books
-       //que al ser de MAX_STOCK espacios de memoria reservada el bucle y el array comienzan en 0 hasta 39
-       //para que sean los MAX_STOCK espacios de memoria reservada.
-       //for(int i = 0; i < MAX_STOCK; i++){
-         //     ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
-	      //}
-          printf("lista de argumentos:\n");
+       printf("lista de argumentos:\n");
           for(int i = 0; i<argc; i++){
             printf("\t Argumento %d: %s\n",i, argv[i]);
           }
+          if (argc == 0){
+            for(int i = 0; i < MAX_STOCK; i++){
+              ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
+            }
+            Search_ID(books);
+            IncreaseCapacity(books);
+            Search_Gender(books);
+          }
+            if (argc == 1){
+                for(int i = 0; i < MAX_STOCK; i++){
+                ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
+               }
+            }
+       //Usamos este bucle for para mostrar todos los elementos de array books
+       //que al ser de MAX_STOCK espacios de memoria reservada el bucle y el array comienzan en 0 hasta 39
+       //para que sean los MAX_STOCK espacios de memoria reservada.
+            for(int i = 0; i < MAX_STOCK; i++){
+                ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
+	           }
+                printf("lista de argumentos:\n");
+                    for(int i = 0; i<argc; i++){
+                        printf("\t Argumento %d: %s\n",i, argv[i]);
+                    }
        //Search_ID(books);
        //IncreaseCapacity(books);
        //Search_Gender(books);
