@@ -1,0 +1,31 @@
+body, html{
+
+
+}
+h1{
+    align-content: center;
+    font-family: Arial;
+    color: white;
+}
+
+.CajaVerdeClaro{
+    background-color: greenyellow;
+    height: 25vh;
+    flex-wrap: wrap
+}
+.Caja1I{
+    background-color: ;
+    display: flex;
+    float: left;
+}
+.Caja1D{
+    display: flex;
+    float: right;
+    
+}
+.CajaAmarilla{
+    background-color: yellow;
+}
+.CajaRosa{
+    background-color: pink;
+}
