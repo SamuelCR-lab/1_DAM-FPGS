@@ -11,16 +11,20 @@ h1{
 .CajaVerdeClaro{
     background-color: greenyellow;
     height: 25vh;
-    flex-wrap: wrap
+    
+
+grid-template-columns: repeat(2,1fr)
 }
 .Caja1I{
+    display: grid;
     background-color: ;
-    display: flex;
-    float: left;
+
+   
 }
 .Caja1D{
-    display: flex;
-    float: right;
+    display: grid;
+   
+  
     
 }
 .CajaAmarilla{

@@ -21,17 +21,17 @@ h1{
 .CajaMorada1{
     flex: auto;
     background-color: blueviolet;
-    height: 50%;
+    height: 60%;
 }
 .CajaMorada2{
     flex: auto;
     background-color: blueviolet;
-    height: 50%;
+    height: 60%;
 }
 .CajaMorada3{
     flex: auto;
     background-color: blueviolet;
-    height: 50%;
+    height: 60%;
 }
 .Caja2Cyan{
     position: absolute;
@@ -42,9 +42,8 @@ h1{
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: repeat(5,1fr);
     background-color: cyan;
-    height: 30vh;
+    height: 70vh;
     width: 70vw;
-    padding: 10px;
     gap: 5px;
 }
 .CajaNaranja1{
@@ -80,7 +79,7 @@ h1{
 .Caja4turquesa{
     position: absolute;
     background-color: lightskyblue;
-    top: 70%;
+    top: 90%;
     left: 40%;
     height: 40vh;
     width: 55vw;
