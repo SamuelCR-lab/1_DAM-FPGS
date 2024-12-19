@@ -84,13 +84,14 @@ body, html{
     background-color: yellow;
     grid-column: 1;
     width: 20%;
-    grid-gap bottom: 10%;
+    margin-bottom: 20px;
 }
 ul{
     margin-top: 0px;
 }
 table{
 border: 1px solid black;
+
 }
 tr{
  border: 1px solid black;

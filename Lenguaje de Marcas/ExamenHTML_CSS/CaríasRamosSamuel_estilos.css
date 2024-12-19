@@ -1,0 +1,100 @@
+body, html{
+    height: 100%;
+    width: 100%;
+    margin: 0%;
+    font-family: Arial, sans-serif;
+}
+h1{
+    text-align: center;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+.Caja1Rosa{
+    position: absolute;
+    display: flex;
+    background-color: pink;
+    height: 30vh;
+    width: 70vw;
+    padding-top: 20px;
+    gap: 10px;
+}
+.CajaMorada1{
+    flex: auto;
+    background-color: blueviolet;
+    height: 60%;
+}
+.CajaMorada2{
+    flex: auto;
+    background-color: blueviolet;
+    height: 60%;
+}
+.CajaMorada3{
+    flex: auto;
+    background-color: blueviolet;
+    height: 60%;
+}
+.Caja2Cyan{
+    position: absolute;
+    z-index: 4;
+    display: grid;
+    top: 20%;
+    left: 30%;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(5,1fr);
+    background-color: cyan;
+    height: 70vh;
+    width: 70vw;
+    gap: 5px;
+}
+.CajaNaranja1{
+    
+    background-color: orange;
+    grid-column: 1/6;
+    grid-row: 1/4;
+}
+.CajaNaranja2{
+    background-color: orange;
+    grid-column: 4/6;
+    grid-row: 4/6;
+}
+.CajaAmarilla1{
+    background-color: yellow;
+    grid-column: 1/4;
+    grid-row: 4/5;
+}
+.CajaAmarilla2{
+    background-color: yellow;
+    grid-column: 1/4;
+    grid-row: 5/6;
+}
+.Caja3Verde{
+    position: absolute;
+    top: 40%;
+    right: 30%;
+    background-color: green;
+    height: 30vh;
+    width: 70vw;
+    padding: 10px;
+}
+.Caja4turquesa{
+    position: absolute;
+    background-color: lightskyblue;
+    top: 90%;
+    left: 40%;
+    height: 40vh;
+    width: 55vw;
+    padding: 20px;
+}
+table{
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    border-collapse: collapse;
+}
+tr, td{
+    border: solid black;
+}
+/* con este form nos damos cuenta de que esta realmente el form dentro de caja naranja 1
+form{
+    display: flex; 
+}*/

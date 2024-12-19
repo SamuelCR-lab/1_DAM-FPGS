@@ -9,7 +9,6 @@
 
 #define MAX_TITLE 80
 #define MAX_AUTOR 50
-#define MAX_GENDER 13
 #define MAX_STOCK 40
 typedef enum {
 	FICTION,
@@ -68,7 +67,22 @@ void Search_ID(Book const * IDSearch_Book){//Le damos a la funcion void en main 
                  if (YesNot == 's'){
                      printf("¿ID del libro a buscar? del (1 al 40): ");//preguntamos el id del libro
                      scanf("%d",&IDBook);
-              if (IDBook >= 0 && IDBook <= 40){//realizamos una criba de valores que el numero debe de ser entre el 0 y el 40
+              if (IDBook >= 0 && IDBook <= MAX_STOCK){//realizamos una criba de valores que el numero debe de ser entre el 0 y el 40
+                     for(int i = 0; i < MAX_STOCK; i++){
+                            if (IDSearch_Book[i].ID == IDBook){//Este bucle realiza la comparacion del id intoducido por el usuario y el que tenemos
+                            //dentro de nuestro arrays catalogo. En esta funlinea pongo .ID y no -> porque
+                                   ShowLibrary(&IDSearch_Book[i]);
+                                   break;
+                            }
+                     }
+              }else{
+              printf("Error no existe ese ID introducido\n");
+              }
+       }         
+}
+void Search_ID_CommandLine(Book const * IDSearch_Book, int ID){//Le damos a la funcion void en main catalogo de libros
+       int  IDBook = ID;
+              if (IDBook >= 0 && IDBook <= MAX_STOCK){//realizamos una criba de valores que el numero debe de ser entre el 0 y el 40
                      for(int i = 0; i < MAX_STOCK; i++){
                             if (IDSearch_Book[i].ID == IDBook){//Este bucle realiza la comparacion del id intoducido por el usuario y el que tenemos
                             //dentro de nuestro arrays catalogo. En esta funlinea pongo .ID y no -> porque
@@ -78,15 +92,31 @@ void Search_ID(Book const * IDSearch_Book){//Le damos a la funcion void en main 
               }else{
               printf("Error no existe ese ID introducido\n");
               }
-       }         
-       
-}
+}   
+void Search_ID_Quant_CommandLine(Book const * ID_CapacitySearch_Book, int ID, int capacity){//Le damos a la funcion void en main catalogo de libros
+       int  IDBook = ID;
+       int Capacity_Book = capacity;
+              if (IDBook >= 0 && IDBook <= MAX_STOCK){//realizamos una criba de valores que el numero debe de ser entre el 0 y el 40
+                     for(int i = 0; i < MAX_STOCK; i++){
+                            if (ID_CapacitySearch_Book[i].ID == IDBook){//Este bucle realiza la comparacion del id intoducido por el usuario y el que tenemos
+                            //dentro de nuestro arrays catalogo. En esta funlinea pongo .ID y no -> porque
+                                   ShowLibrary(&ID_CapacitySearch_Book[i]);
+                            }
+                            if (ID_CapacitySearch_Book[i].capacity_available == Capacity_Book){
+                                   ShowLibrary(&ID_CapacitySearch_Book[i]);
+                            }
+                     }
+
+              }else{
+              printf("Error no existe ese ID o Cantidad introducido\n");
+              }
+}               
 
 int Search_IDIncrease(Book const * IDSearch_Book){//En esta funcion es una auxiliar que creamos para ayudara a retornar la posicion del ID a incrementar que no se modificara su contenido
        int IDBookIncrease;
               printf("¿ID del libro que quieres aumentar su cantidad? del (1 al 40): ");//preguntamos el id del libro
               scanf("%d",&IDBookIncrease);
-              if (IDBookIncrease >= 0 && IDBookIncrease <= 40){//realizamos una criba de valores que el numero debe de ser entre el 0 y el 40
+              if (IDBookIncrease >= 0 && IDBookIncrease <= MAX_STOCK){//realizamos una criba de valores que el numero debe de ser entre el 0 y el 40
                      for(int i = 0; i < MAX_STOCK; i++){
                             if (IDSearch_Book[i].ID == IDBookIncrease){//Este bucle realiza la comparacion del id intoducido por el usuario y el que tenemos
                             //dentro catalogo
@@ -118,6 +148,24 @@ void IncreaseCapacity(Book * increased_book){//En esta funcion no se utiliza el 
               ShowLibrary(&increased_book[ID_to_increase]);//En esta linea llamamos a la funcion ShowLibrary() para que muestre el incremento del libro ID que hemos solicitado anteriormente almacenado en ID_to_increase 
 }
 
+/*void IncreaseCapacity(Book * increased_book){//En esta funcion no se utiliza el const debido a que incrementamos un valor del array que recibe la funcion, por ello no ponemos const
+       int num_to_increase;
+       int ID_to_increase;
+       ID_to_increase = Search_IDIncrease(increased_book);//guardo en la variable ID_to_increase la el return de la funcion Search_IDIncrease
+       //Que he creado para que pregunte cual es el ID del libro a Incrementar
+              printf("¿Cuanto quieres aumentar la cantidad del libro?: ");
+              scanf("%d",&num_to_increase);
+              --ID_to_increase;// Aqui reduzco el valor que recibo de Search_IDIncrease porque da un número entre 1 y 40 y mi arrays es de 40 espacios que va del 0 al 39
+       //Utilizo las flechas por le estoy diciendo 
+              (increased_book + ID_to_increase)->capacity_available = increased_book[ID_to_increase].capacity_available + num_to_increase;
+       /* En esta linea donde le doy a el puntero increased_book que le he dado el struct books que dentro tiene el arrays books
+       llamo mediante esta direccion dada solo a la variable increased_book[ID_to_increase] 
+       que contiene el contenido que queremos como es en este caso capacity_available (siendo la capacidad del stock ahora mismo), 
+       igualo este valor a la varible direccionada increased_book[ID_to_increase] y le sumo la cantidad que se quiere aumentar
+       
+              ShowLibrary(&increased_book[ID_to_increase]);//En esta linea llamamos a la funcion ShowLibrary() para que muestre el incremento del libro ID que hemos solicitado anteriormente almacenado en ID_to_increase 
+}
+*/
 void Search_Gender(const Book * Search){
        int gender;
        char YesNot;
@@ -157,20 +205,103 @@ void Search_Gender(const Book * Search){
        }
 }
 
-/*void Show_by_author(const Book * Show_Author){
-       char author[50];
-       int comparate = 0;
+void Search_Gender_CommandLine(const Book * Search, int ID_Gender){
+       int gender = ID_Gender;
+              for (int i = 0; i < MAX_STOCK; i++){
+                     if (gender - 1 == Search[i].gender){//Al ya estar accediendo a la direccion de memoria de .gender con [i] no hay que utilizar -> pero si .
+                            switch (gender){
+                            case 0:
+                                   ShowLibrary(&Search[i]);
+                            break;
+                            case 1:
+                                   ShowLibrary(&Search[i]);
+                            break;
+                            case 2:
+                                   ShowLibrary(&Search[i]);
+                            break;
+                            case 3:
+                                   ShowLibrary(&Search[i]);
+                            break;
+                            case 4:
+                                   ShowLibrary(&Search[i]);
+                            break;
+                            default:
+                            printf("Error no existe ese genero introducido\n");
+                            }     
+                     }
+              }
+}
+
+void Show_author(const Book * Show_Author){
+       char author[MAX_AUTOR];
        char YesNot;
+       int author_long;
+       int string_long;
        printf("¿Quieres buscar un libro por su autor?");
        scanf(" %c",&YesNot);//pongo espacio a las a %c debido a que al venir de 
               if (YesNot == 's'){
+                     printf("Nombre del autor que quieres buscar sus libros: ");
+                     scanf(" ");
+                     fgets(author, sizeof(author), stdin);
+                     author_long = strlen(author)-1;// aqui en int author_long guardamos la cadena de author que nos da el usuario y el -1 por el \0
+                     
                      for (int i =0; i < MAX_STOCK; i++){
-                     comparate = strncmp(author, Show_Author);
+                            if(strlen(Show_Author->author) <= author_long){//
+                                   string_long = 0;
+                            }else{
+                                   string_long = strlen(Show_Author->author) - author_long;
+
+                            }
+                            for (int n = 0; n <= string_long; ++n){//n de Next de siguiente autor
+                            if (strcmp(author, Show_Author[i].author) == 0){
+                                   ShowLibrary(Show_Author+i);
+                            }
                      }
               }
-}*/
+       }
+}
+void Show_author_CommandLine(const Book * Show_Author, char name[MAX_AUTOR]){
+       char author[MAX_AUTOR];
+       author[MAX_AUTOR] = name[MAX_AUTOR];
+       int author_long;
+       int string_long;
+              fgets(name, sizeof(MAX_AUTOR), stdin);
+                     author_long = strlen(author)-1;// aqui en int author_long guardamos la cadena de author que nos da el usuario y el -1 por el \0
+                     
+                     for (int i =0; i < MAX_STOCK; i++){
+                            if(strlen(Show_Author->author) <= author_long){//
+                                   string_long = 0;
+                            }else{
+                                   string_long = strlen(Show_Author->author) - author_long;
 
- int main(int argc, char ** argv){
+                            }
+                            for (int n = 0; n <= string_long; ++n){//n de Next de siguiente autor
+                                   if (strncmp(author, Show_Author[i].author+n,author_long) == 0){
+                                          ShowLibrary(&Show_Author[n]);
+                                   }
+                            }
+                     }
+              }
+
+void add_book(Book*book){
+       books_add = (Book*) realloc(books, )
+
+
+
+
+}
+
+
+ int main(int argcount, char ** argvalue){
+       /*Para memoria dinamica 
+       Book * books= (Book*) malloc (sizeof(Book)*MAX_STOCK);
+       
+       Para añadir un libro nuevo, crear una funcion nueva que dentro de ella
+       cambiar el define MAX_ 
+       void add_book(Book*book){
+       books_add = (Book*) realloc(books, )
+       }
+       */
  		Book books[MAX_STOCK] = {
         {1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10},
         {2, "1984", "George Orwell", 12.49, FICTION, 5},
@@ -214,25 +345,66 @@ void Search_Gender(const Book * Search){
         {40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ESSAY, 10}
     }; 
 
+       if (argcount == 1){
+              for(int i = 0; i < MAX_STOCK; i++){
+                     ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
+                   }
+              Search_ID(books);
+              IncreaseCapacity(books);
+              Search_Gender(books);
 
-       printf("lista de argumentos:\n");
-          for(int i = 0; i<argc; i++){
-            printf("\t Argumento %d: %s\n",i, argv[i]);
-            if (argv == 0){
-            for(int i = 0; i < MAX_STOCK; i++){
-              ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
-            }
-            Search_ID(books);
-            IncreaseCapacity(books);
-            Search_Gender(books);
-          }
-          }
-          
-          //  if (argv == 1){
-          //      for(int i = 0; i < MAX_STOCK; i++){
-          //      ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
-          //     }
-           // }
+       }else if (argcount == 2){
+              if (strcmp(argvalue[1], "mostrar") == 0){
+                     for(int i = 0; i < MAX_STOCK; i++){
+                     ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
+                   }
+              }
+              Search_ID(books);
+              IncreaseCapacity(books);
+              Search_Gender(books);
+              /*}else if(strcmp(argvalue[1], "añadir") == 0){
+                     int * arrBookNew = (Book*) realloc
+              }*/
+       }else if (argcount == 3){
+              int id = 0;
+              id = atoi(argvalue[2]);
+                     if (strcmp(argvalue[1], "mostrar") == 0){
+                            if (id == 0){
+                                   for(int i = 0; i < MAX_STOCK; i++){
+                                          ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
+                                   }
+                            }else{
+                                   Search_ID_CommandLine(books, id);
+                            }
+                     }else if (strcmp(argvalue[1], "categoria") == 0){
+                            Search_Gender_CommandLine(books, id);
+
+                     }else if (strcmp(argvalue[1], "autor") == 0){
+                            Show_author_CommandLine(books, argvalue[2]);
+                     }else{
+                            printf("No se puede mostrar esta categoria requerida");
+                     }
+       }else if (argcount == 4){
+              int id = 0;
+              id = atoi(argvalue[2]);
+              int id_stock = 0;
+              id_stock = atoi(argvalue[3]);
+                     if (strcmp(argvalue[1], "stock") == 0){
+                            if (id == 0){
+                                   for(int i = 0; i < MAX_STOCK; i++){
+                                          ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
+                                   }
+                            }else{
+                                   Search_ID_Quant_CommandLine(books, id, id_stock);
+                            }
+                     }
+       }else{
+              printf("Error demasiados argumentos por lineas de comandos");
+              return 0;
+       }
+       
+              
+
 
        //Usamos este bucle for para mostrar todos los elementos de array books
        //que al ser de MAX_STOCK espacios de memoria reservada el bucle y el array comienzan en 0 hasta 39
