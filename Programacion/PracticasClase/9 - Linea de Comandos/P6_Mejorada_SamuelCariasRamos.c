@@ -29,8 +29,8 @@ typedef struct{
 
 void ShowLibrary(const Book * print_book){
 	printf("ID del libro: %d.\n",print_book->ID);
-	printf("\tTitulo: %s.\n",print_book->title);
-	printf("\tAutor: %s.\n",print_book->author);
+	printf("\tTitulo: %s. \n",print_book->title);
+	printf("\tAutor: %s. \n",print_book->author);
 	printf("\tPrecio: %f.\n",print_book->price);
 	printf("\tCategoria: ");
               switch (print_book->gender){
@@ -283,71 +283,89 @@ void Show_author_CommandLine(const Book * Show_Author, char name[MAX_AUTOR]){
                      }
               }
 
-void add_book_Library(Book * books_add, int add_id, char * add_title, char * add_author, float add_price, int add_gender, int capacity_available){
-       books_add = (Book*) realloc(books_add, sizeof(Book) * (capacity_available+1));
-
-
-
-
-
+void book_Library(Book * books_add, int add_id, char * add_title, char * add_author, float add_price, int add_gender, int add_capacity_available){
+       books_add->ID = add_id;
+       strcpy(books_add->title, add_title);
+       strcpy(books_add->author, add_author);
+       books_add->price = add_price;
+       books_add->gender = add_gender;
+       books_add->capacity_available = add_capacity_available;
+}
+void add_book_Library(Book * new_books_add){
+       MAX_STOCK = MAX_STOCK + 1;
+       new_books_add = (Book*) realloc(new_books_add, sizeof(Book) * (MAX_STOCK));
+       if (new_books_add == NULL){
+              printf("ERROR FATAL, no hay memoria.\n");
+              return EXIT_FAILURE;
+       }
+       Book Book_new;
+       printf("Añade los datos\n");
+       printf("Id del libro: ");
+       scanf(" %d",&Book_new.ID);
+       printf("Titulo del libro: ");
+       scanf(" ");
+       fgets(Book_new.title, MAX_TITLE, stdin);
+       printf("Autor del libro: ");
+       scanf(" ");
+       fgets(Book_new.author, MAX_AUTOR, stdin);
+       printf("Precio: ");
+       scanf("%f",&Book_new.price);
+       printf("Genero (0 = Ficcion, 1 = No Ficcion, 2 = Poesia, 3 = Teatro, 4 = Ensayo): ");
+       scanf("%u",&Book_new.gender);
+       printf("Cantidad de existencias: ");
+       scanf("%d",&Book_new.capacity_available);
+       book_Library(&new_books_add[MAX_STOCK -1],Book_new.ID,Book_new.title,Book_new.author,Book_new.price,Book_new.gender,Book_new.capacity_available);
 }
 
-
  int main(int argcount, char ** argvalue){
-       /*Para memoria dinamica 
-       Book  books= (Book*) malloc (sizeof(Book)*MAX_STOCK);
-       
-       Para añadir un libro nuevo, crear una funcion nueva que dentro de ella
-       cambiar el define MAX_ 
-       void add_book(Book*book){
-       books_add = (Book*) realloc(books, )
-       }
-       */
-              Book * books= (Book*) malloc (sizeof(Book)*MAX_STOCK);
-        add_book_Library(1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10);
-        add_book_Library(2, "1984", "George Orwell", 12.49, FICTION, 5);
-        add_book_Library(3, "The Great Gatsby", "F. Scott Fitzgerald", 10.99, FICTION, 8);
-        add_book_Library(4, "Moby Dick", "Herman Melville", 18.99, FICTION, 12);
-        add_book_Library(5, "War and Peace", "Leo Tolstoy", 20.00, FICTION, 7);
-        add_book_Library(6, "Pride and Prejudice", "Jane Austen", 14.99, FICTION, 9);
-        add_book_Library(7, "The Catcher in the Rye", "J.D. Salinger", 10.00, FICTION, 6);
-        add_book_Library(8, "The Odyssey", "Homer", 17.49, FICTION, 4);
-        add_book_Library(9, "Ulysses", "James Joyce", 25.00, FICTION, 2);
-        add_book_Library(10, "The Divine Comedy", "Dante Alighieri", 22.00, POETRY, 3);
-        add_book_Library(11, "Leaves of Grass", "Walt Whitman", 13.00, POETRY, 11);
-       add_book_Library(12, "The Iliad", "Homer", 18.50, FICTION, 7);
-        add_book_Library(13, "A Brief History of Time", "Stephen Hawking", 15.00, NON_FICTION, 15);
-        add_book_Library(14, "The Art of War", "Sun Tzu", 9.99, NON_FICTION, 20);
-        add_book_Library(15, "Sapiens: A Brief History of Humankind", "Yuval Noah Harari", 16.49, NON_FICTION, 13);
-        add_book_Library(16, "The Selfish Gene", "Richard Dawkins", 14.00, NON_FICTION, 6);
-        add_book_Library(17, "The Road to Serfdom", "F.A. Hayek", 10.50, NON_FICTION, 5);
-        add_book_Library(18, "The Wealth of Nations", "Adam Smith", 30.00, NON_FICTION, 8);
-        add_book_Library(19, "On the Origin of Species", "Charles Darwin", 24.99, NON_FICTION, 4);
-        add_book_Library(20, "The Prince", "Niccolò Machiavelli", 8.99, NON_FICTION, 14);
-        add_book_Library(21, "Hamlet", "William Shakespeare", 11.50, THEATER, 6);
-        add_book_Library(22, "Macbeth", "William Shakespeare", 9.50, THEATER, 8);
-       add_book_Library(23, "Othello", "William Shakespeare", 10.99, THEATER, 7);
-        add_book_Library(24, "A Doll's House", "Henrik Ibsen", 12.50, THEATER, 5);
-        add_book_Library(25, "Waiting for Godot", "Samuel Beckett", 13.99, THEATER, 4);
-        add_book_Library(26, "Death of a Salesman", "Arthur Miller", 14.99, THEATER, 10);
-        add_book_Library(27, "The Glass Menagerie", "Tennessee Williams", 11.00, THEATER, 9);
-        add_book_Library(28, "Long Day's Journey into Night", "Eugene O'Neill", 19.50, THEATER, 3);
-        add_book_Library(29, "The Importance of Being Earnest", "Oscar Wilde", 8.50, THEATER, 15);
-        add_book_Library(30, "The Waste Land", "T.S. Eliot", 6.99, POETRY, 10);
-        add_book_Library(31, "Paradise Lost", "John Milton", 12.00, POETRY, 7);
-        add_book_Library(32, "Beowulf", "Anonymous", 15.00, POETRY, 5);
-        add_book_Library(33, "Essays", "Michel de Montaigne", 20.00, ESSAY, 4);
-        add_book_Library(34, "Self-Reliance and Other Essays", "Ralph Waldo Emerson", 9.00, ESSAY, 9);
-        add_book_Library(35, "Civil Disobedience and Other Essays", "Henry David Thoreau", 7.50, ESSAY, 11);
-        add_book_Library(36, "Meditations", "Marcus Aurelius", 11.99, ESSAY, 8);
-        add_book_Library(37, "The Federalist Papers", "Alexander Hamilton, James Madison, John Jay", 18.00, ESSAY, 5);
-        add_book_Library(38, "The Communist Manifesto", "Karl Marx and Friedrich Engels", 5.99, ESSAY, 12);
-        add_book_Library(39, "The Republic", "Plato", 16.00, ESSAY, 6);
-        add_book_Library(40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ESSAY, 10); 
+
+              Book * books = (Book*) malloc(sizeof(Book)*MAX_STOCK);
+        book_Library(&books[0], 1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10);
+        book_Library(&books[1],2, "1984", "George Orwell", 12.49, FICTION, 5);
+        book_Library(&books[2],3, "The Great Gatsby", "F. Scott Fitzgerald", 10.99, FICTION, 8);
+        book_Library(&books[3],4, "Moby Dick", "Herman Melville", 18.99, FICTION, 12);
+        book_Library(&books[4],5, "War and Peace", "Leo Tolstoy", 20.00, FICTION, 7);
+        book_Library(&books[5],6, "Pride and Prejudice", "Jane Austen", 14.99, FICTION, 9);
+        book_Library(&books[6],7, "The Catcher in the Rye", "J.D. Salinger", 10.00, FICTION, 6);
+        book_Library(&books[7],8, "The Odyssey", "Homer", 17.49, FICTION, 4);
+        book_Library(&books[8],9, "Ulysses", "James Joyce", 25.00, FICTION, 2);
+        book_Library(&books[9],10, "The Divine Comedy", "Dante Alighieri", 22.00, POETRY, 3);
+        book_Library(&books[10],11, "Leaves of Grass", "Walt Whitman", 13.00, POETRY, 11);
+        book_Library(&books[11],12, "The Iliad", "Homer", 18.50, FICTION, 7);
+        book_Library(&books[12],13, "A Brief History of Time", "Stephen Hawking", 15.00, NON_FICTION, 15);
+        book_Library(&books[13],14, "The Art of War", "Sun Tzu", 9.99, NON_FICTION, 20);
+        book_Library(&books[14],15, "Sapiens: A Brief History of Humankind", "Yuval Noah Harari", 16.49, NON_FICTION, 13);
+        book_Library(&books[15],16, "The Selfish Gene", "Richard Dawkins", 14.00, NON_FICTION, 6);
+        book_Library(&books[16],17, "The Road to Serfdom", "F.A. Hayek", 10.50, NON_FICTION, 5);
+        book_Library(&books[17],18, "The Wealth of Nations", "Adam Smith", 30.00, NON_FICTION, 8);
+        book_Library(&books[18],19, "On the Origin of Species", "Charles Darwin", 24.99, NON_FICTION, 4);
+        book_Library(&books[19],20, "The Prince", "Niccolò Machiavelli", 8.99, NON_FICTION, 14);
+        book_Library(&books[20],21, "Hamlet", "William Shakespeare", 11.50, THEATER, 6);
+        book_Library(&books[21],22, "Macbeth", "William Shakespeare", 9.50, THEATER, 8);
+        book_Library(&books[22],23, "Othello", "William Shakespeare", 10.99, THEATER, 7);
+        book_Library(&books[23],24, "A Doll's House", "Henrik Ibsen", 12.50, THEATER, 5);
+        book_Library(&books[24],25, "Waiting for Godot", "Samuel Beckett", 13.99, THEATER, 4);
+        book_Library(&books[25],26, "Death of a Salesman", "Arthur Miller", 14.99, THEATER, 10);
+        book_Library(&books[26],27, "The Glass Menagerie", "Tennessee Williams", 11.00, THEATER, 9);
+        book_Library(&books[27],28, "Long Day's Journey into Night", "Eugene O'Neill", 19.50, THEATER, 3);
+        book_Library(&books[28],29, "The Importance of Being Earnest", "Oscar Wilde", 8.50, THEATER, 15);
+        book_Library(&books[29],30, "The Waste Land", "T.S. Eliot", 6.99, POETRY, 10);
+        book_Library(&books[30],31, "Paradise Lost", "John Milton", 12.00, POETRY, 7);
+        book_Library(&books[31],32, "Beowulf", "Anonymous", 15.00, POETRY, 5);
+        book_Library(&books[32],33, "Essays", "Michel de Montaigne", 20.00, ESSAY, 4);
+        book_Library(&books[33],34, "Self-Reliance and Other Essays", "Ralph Waldo Emerson", 9.00, ESSAY, 9);
+        book_Library(&books[34],35, "Civil Disobedience and Other Essays", "Henry David Thoreau", 7.50, ESSAY, 11);
+        book_Library(&books[35],36, "Meditations", "Marcus Aurelius", 11.99, ESSAY, 8);
+        book_Library(&books[36],37, "The Federalist Papers", "Alexander Hamilton, James Madison, John Jay", 18.00, ESSAY, 5);
+        book_Library(&books[37],38, "The Communist Manifesto", "Karl Marx and Friedrich Engels", 5.99, ESSAY, 12);
+        book_Library(&books[38],39, "The Republic", "Plato", 16.00, ESSAY, 6);
+        book_Library(&books[39],40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ESSAY, 10); 
     
-    if (books == NULL){
-       return 1;
-    }
+       if (books == NULL){
+              printf("ERROR FATAL, no hay memoria.\n");
+              return EXIT_FAILURE;
+       }
+
        if (argcount == 1){
               for(int i = 0; i < MAX_STOCK; i++){
                      ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
@@ -356,18 +374,21 @@ void add_book_Library(Book * books_add, int add_id, char * add_title, char * add
               IncreaseCapacity(books);
               Search_Gender(books);
 
+              add_book_Library(books);
+
        }else if (argcount == 2){
               if (strcmp(argvalue[1], "mostrar") == 0){
                      for(int i = 0; i < MAX_STOCK; i++){
                      ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
                    }
+              }else if(strcmp(argvalue[1], "añadir") == 0){
+                     add_book_Library(books);
+                     ShowLibrary(&books[MAX_STOCK - 1]);
+                     for(int i = 0; i < MAX_STOCK; i++){
+                     ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
+                   }
               }
-              Search_ID(books);
-              IncreaseCapacity(books);
-              Search_Gender(books);
-              /*}else if(strcmp(argvalue[1], "añadir") == 0){
-                     int * arrBookNew = (Book*) realloc
-              }*/
+
        }else if (argcount == 3){
               int id = 0;
               id = atoi(argvalue[2]);
@@ -401,26 +422,12 @@ void add_book_Library(Book * books_add, int add_id, char * add_title, char * add
                                    Search_ID_Quant_CommandLine(books, id, id_stock);
                             }
                      }
+
        }else{
               printf("Error demasiados argumentos por lineas de comandos");
               return 0;
        }
-       
-              
 
-
-       //Usamos este bucle for para mostrar todos los elementos de array books
-       //que al ser de MAX_STOCK espacios de memoria reservada el bucle y el array comienzan en 0 hasta 39
-       //para que sean los MAX_STOCK espacios de memoria reservada.
-       //for(int i = 0; i < MAX_STOCK; i++){
-        //      ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
-	  //    }
-
-      // Search_ID(books);
-      // IncreaseCapacity(books);
-      // Search_Gender(books);
-       //Show_by_author(books); No me dio tiempo a terminar la funcion y no se si funciona por lo que te la dejo como comentario
-
-
+              free(books);
  	return 0;
 }
