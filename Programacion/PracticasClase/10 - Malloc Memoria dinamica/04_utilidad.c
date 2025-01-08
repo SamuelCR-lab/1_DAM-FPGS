@@ -37,5 +37,9 @@ int main() {
 		printf("arr[%d] %d\n",i,arr_ampliado[i]);
 	}
 	free(arr_ampliado);
+
+	/*Apartir del Ejercicio 6*/
+	
+
 	return 0;
 }
