@@ -283,7 +283,7 @@ void Show_author_CommandLine(const Book * Show_Author, char name[MAX_AUTOR]){
                      }
               }
 
-void book_Library(Book * books_add, int add_id, char * add_title, char * add_author, float add_price, int add_gender, int add_capacity_available){
+void book_Library(Book * books_add, int add_id, char * add_title, char * add_author, float add_price, int add_gender, int add_capacity_available){/*Con esta funcion haremos que cada uno de los libros que tenemos y los proximos que se agreguase se guarden en la memoria reservada anteriormente, con una direccion de memoria que hace referencia al espacio en el que va a estar dentro de la reserva y los datos que van a ocupar reservadas por el sizeof */
        books_add->ID = add_id;
        strcpy(books_add->title, add_title);
        strcpy(books_add->author, add_author);
@@ -291,14 +291,14 @@ void book_Library(Book * books_add, int add_id, char * add_title, char * add_aut
        books_add->gender = add_gender;
        books_add->capacity_available = add_capacity_available;
 }
-void add_book_Library(Book * new_books_add){
+void add_book_Library(Book * new_books_add){/*Esta funcion es la que vamos a llamar para agregar un libro a nuestra libreria dentro de la memoria reservada por lo que hay que hacer el realloc*/
        MAX_STOCK = MAX_STOCK + 1;
        new_books_add = (Book*) realloc(new_books_add, sizeof(Book) * (MAX_STOCK));
        if (new_books_add == NULL){
               printf("ERROR FATAL, no hay memoria.\n");
               return EXIT_FAILURE;
        }
-       Book Book_new;
+       Book Book_new;/*Al ser Book un struct de varios tipos de datos, que debe tener el nuevo libro y para obtener esa referencia se le da una variable Book_new*/
        printf("Añade los datos\n");
        printf("Id del libro: ");
        scanf(" %d",&Book_new.ID);
@@ -318,7 +318,7 @@ void add_book_Library(Book * new_books_add){
 }
 
  int main(int argcount, char ** argvalue){
-
+              /*Aqui se realizo mediante un malloc la reserva de memoria, es una multiplicacion de de un tamaño sizeof(Book) que es un typedef struct que contiene cada dato y lo que ocupa para cada libro y la cantidad maxima que tenemos en la libreria llamada MAX_STOCK la variable*/
               Book * books = (Book*) malloc(sizeof(Book)*MAX_STOCK);
         book_Library(&books[0], 1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10);
         book_Library(&books[1],2, "1984", "George Orwell", 12.49, FICTION, 5);
@@ -373,7 +373,6 @@ void add_book_Library(Book * new_books_add){
               Search_ID(books);
               IncreaseCapacity(books);
               Search_Gender(books);
-
               add_book_Library(books);
 
        }else if (argcount == 2){
