@@ -9,7 +9,7 @@
 
 #define MAX_TITLE 80
 #define MAX_AUTOR 50
-int MAX_STOCK = 40;
+int MAX_STOCK = 40;/*Mediante la creacion de esta variable global hacemos que el codigo base del programa no varie completamente y solo realice los cambios para el realloc, unico momento en el que es necesario que sea modificable*/
 typedef enum {
 	FICTION,
 	NON_FICTION,
@@ -54,10 +54,7 @@ void ShowLibrary(const Book * print_book){
        printf("\n");
 }
 
-       /*En estas funciones void varias de ella he utilizado [para acceder a la memoria] debido a esto 
-       se utiliza el . y no la ->, esta ultima se utiliza cuando a la direccion de memoria que recibe nuestra funcion void como puntero
-       queremos acceder a ella sin especificar su espacio y al ser una direccion de memoria le ponemos la -> para que vaya al espacio de memoria con el nombre que queremos al igual que el punto que solo direccionan. 
-       Por ello, dependiendo de como queremos acceder a esa direccion de memoria se usa . o ->.*/
+       /*En estas funciones void varias de ellas he utilizado "[]" (para acceder a la memoria) debido a esto se utiliza el . y no la ->, esta ultima se utiliza cuando a la direccion de memoria que recibe nuestra funcion void como puntero queremos acceder a ella sin especificar su espacio y al ser una direccion de memoria le ponemos la -> para que vaya al espacio de memoria con el nombre que le hemos dado dentro de la funcion al igual que el punto que accede a lo que viene despues del punto dentro de la direccion de memoria que le damos. Por ello, dependiendo de como queremos acceder a esa direccion de memoria se usa . o ->.*/
 
 void Search_ID(Book const * IDSearch_Book){//Le damos a la funcion void en main catalogo de libros
        int IDBook;
@@ -80,7 +77,7 @@ void Search_ID(Book const * IDSearch_Book){//Le damos a la funcion void en main 
               }
        }         
 }
-void Search_ID_CommandLine(Book const * IDSearch_Book, int ID){//Le damos a la funcion void en main catalogo de libros
+void Search_ID_CommandLine(Book const * IDSearch_Book, int ID){/*Le damos a la funcion void en main catalogo de libros y aqui lo recibimos par que funcione la busqueda por ID (Funcion antes realizada en al funcion del programa base) que fue introducido por linea de comandos*/
        int  IDBook = ID;
               if (IDBook >= 0 && IDBook <= MAX_STOCK){//realizamos una criba de valores que el numero debe de ser entre el 0 y el 40
                      for(int i = 0; i < MAX_STOCK; i++){
@@ -93,7 +90,7 @@ void Search_ID_CommandLine(Book const * IDSearch_Book, int ID){//Le damos a la f
               printf("Error no existe ese ID introducido\n");
               }
 }   
-void Search_ID_Quant_CommandLine(Book const * ID_CapacitySearch_Book, int ID, int capacity){//Le damos a la funcion void en main catalogo de libros
+void Search_ID_Quant_CommandLine(Book const * ID_CapacitySearch_Book, int ID, int capacity){/*En esta funcion que recibe un ID y una cantidad que se lo damos a la */
        int  IDBook = ID;
        int Capacity_Book = capacity;
               if (IDBook >= 0 && IDBook <= MAX_STOCK){//realizamos una criba de valores que el numero debe de ser entre el 0 y el 40
@@ -148,29 +145,11 @@ void IncreaseCapacity(Book * increased_book){//En esta funcion no se utiliza el 
               ShowLibrary(&increased_book[ID_to_increase]);//En esta linea llamamos a la funcion ShowLibrary() para que muestre el incremento del libro ID que hemos solicitado anteriormente almacenado en ID_to_increase 
 }
 
-/*void IncreaseCapacity(Book * increased_book){//En esta funcion no se utiliza el const debido a que incrementamos un valor del array que recibe la funcion, por ello no ponemos const
-       int num_to_increase;
-       int ID_to_increase;
-       ID_to_increase = Search_IDIncrease(increased_book);//guardo en la variable ID_to_increase la el return de la funcion Search_IDIncrease
-       //Que he creado para que pregunte cual es el ID del libro a Incrementar
-              printf("¿Cuanto quieres aumentar la cantidad del libro?: ");
-              scanf("%d",&num_to_increase);
-              --ID_to_increase;// Aqui reduzco el valor que recibo de Search_IDIncrease porque da un número entre 1 y 40 y mi arrays es de 40 espacios que va del 0 al 39
-       //Utilizo las flechas por le estoy diciendo 
-              (increased_book + ID_to_increase)->capacity_available = increased_book[ID_to_increase].capacity_available + num_to_increase;
-       /* En esta linea donde le doy a el puntero increased_book que le he dado el struct books que dentro tiene el arrays books
-       llamo mediante esta direccion dada solo a la variable increased_book[ID_to_increase] 
-       que contiene el contenido que queremos como es en este caso capacity_available (siendo la capacidad del stock ahora mismo), 
-       igualo este valor a la varible direccionada increased_book[ID_to_increase] y le sumo la cantidad que se quiere aumentar
-       
-              ShowLibrary(&increased_book[ID_to_increase]);//En esta linea llamamos a la funcion ShowLibrary() para que muestre el incremento del libro ID que hemos solicitado anteriormente almacenado en ID_to_increase 
-}
-*/
 void Search_Gender(const Book * Search){
        int gender;
        char YesNot;
-              printf("¿Quieres buscar un libro por su genero? s(Sí) o n(no): ");//preguntamos si quiere buscar un libro
-              scanf(" %c",&YesNot);//pongo espacio a las a %c debido a que al venir de 
+              printf("¿Quieres buscar un libro por su genero? s(Sí) o n(no): ");//preguntamos si quiere buscar un libro por su genero
+              scanf(" %c",&YesNot);//pongo espacio a las a %c debido a que es una pregunta y al introducir el si o no se necesita el enter que es un \n y hay que eliminarlo
               if (YesNot == 's'){
                      printf("Categorias a elegir:\n");
                      printf("\t 1 Ficcion\n");
@@ -202,7 +181,7 @@ void Search_Gender(const Book * Search){
                             }     
                      }
               }
-       }
+              }
 }
 
 void Search_Gender_CommandLine(const Book * Search, int ID_Gender){
@@ -232,16 +211,16 @@ void Search_Gender_CommandLine(const Book * Search, int ID_Gender){
               }
 }
 
-void Show_author(const Book * Show_Author){
+void Show_author(const Book * Show_Author){/*Buscar los libros que compartan autor*/
        char author[MAX_AUTOR];
        char YesNot;
        int author_long;
        int string_long;
-       printf("¿Quieres buscar un libro por su autor?");
-       scanf(" %c",&YesNot);//pongo espacio a las a %c debido a que al venir de 
+       printf("¿Quieres buscar un libro por su autor?: ");
+       scanf(" %c",&YesNot);//pongo espacio a las a %c debido a que es una pregunta y al introducir el si o no se necesita el enter que es un \n y hay que eliminarlo
               if (YesNot == 's'){
                      printf("Nombre del autor que quieres buscar sus libros: ");
-                     scanf(" ");
+                     scanf(" "); /*Con este scanf vacio evitamos cualquier \n que se haya guardado mal*/
                      fgets(author, sizeof(author), stdin);
                      author_long = strlen(author)-1;// aqui en int author_long guardamos la cadena de author que nos da el usuario y el -1 por el \0
                      
@@ -253,14 +232,14 @@ void Show_author(const Book * Show_Author){
 
                             }
                             for (int n = 0; n <= string_long; ++n){//n de Next de siguiente autor
-                            if (strcmp(author, Show_Author[i].author) == 0){
-                                   ShowLibrary(Show_Author+i);
+                                   if (strcmp(author, Show_Author[i].author) == 0){
+                                          ShowLibrary(Show_Author+i);
+                                   }
                             }
                      }
-              }
-       }
+              }      
 }
-void Show_author_CommandLine(const Book * Show_Author, char name[MAX_AUTOR]){
+void Show_author_CommandLine(const Book * Show_Author, char name[MAX_AUTOR]){/*Esta funcion tiene la misma manera de funcionar que dentro del programa solo que por tenemos que darle a la funcion el autor introducido mediante un char */
        char author[MAX_AUTOR];
        author[MAX_AUTOR] = name[MAX_AUTOR];
        int author_long;
@@ -281,7 +260,8 @@ void Show_author_CommandLine(const Book * Show_Author, char name[MAX_AUTOR]){
                                    }
                             }
                      }
-              }
+ }
+
 
 void book_Library(Book * books_add, int add_id, char * add_title, char * add_author, float add_price, int add_gender, int add_capacity_available){/*Con esta funcion haremos que cada uno de los libros que tenemos y los proximos que se agreguase se guarden en la memoria reservada anteriormente, con una direccion de memoria que hace referencia al espacio en el que va a estar dentro de la reserva y los datos que van a ocupar reservadas por el sizeof */
        books_add->ID = add_id;
@@ -296,7 +276,7 @@ void add_book_Library(Book * new_books_add){/*Esta funcion es la que vamos a lla
        new_books_add = (Book*) realloc(new_books_add, sizeof(Book) * (MAX_STOCK));
        if (new_books_add == NULL){
               printf("ERROR FATAL, no hay memoria.\n");
-              return EXIT_FAILURE;
+              return;
        }
        Book Book_new;/*Al ser Book un struct de varios tipos de datos, que debe tener el nuevo libro y para obtener esa referencia se le da una variable Book_new*/
        printf("Añade los datos\n");
@@ -315,6 +295,15 @@ void add_book_Library(Book * new_books_add){/*Esta funcion es la que vamos a lla
        printf("Cantidad de existencias: ");
        scanf("%d",&Book_new.capacity_available);
        book_Library(&new_books_add[MAX_STOCK -1],Book_new.ID,Book_new.title,Book_new.author,Book_new.price,Book_new.gender,Book_new.capacity_available);
+}
+void Show_P6_TOTAL(Book * p6_total){
+       for(int i = 0; i < MAX_STOCK; i++){
+              ShowLibrary(p6_total+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
+       }
+       Search_ID(p6_total);
+       IncreaseCapacity(p6_total);
+       Search_Gender(p6_total);
+       add_book_Library(p6_total);
 }
 
  int main(int argcount, char ** argvalue){
@@ -367,13 +356,7 @@ void add_book_Library(Book * new_books_add){/*Esta funcion es la que vamos a lla
        }
 
        if (argcount == 1){
-              for(int i = 0; i < MAX_STOCK; i++){
-                     ShowLibrary(books+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
-                   }
-              Search_ID(books);
-              IncreaseCapacity(books);
-              Search_Gender(books);
-              add_book_Library(books);
+              Show_P6_TOTAL(books);
 
        }else if (argcount == 2){
               if (strcmp(argvalue[1], "mostrar") == 0){
