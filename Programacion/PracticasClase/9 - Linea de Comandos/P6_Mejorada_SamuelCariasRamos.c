@@ -211,12 +211,12 @@ void Search_Gender_CommandLine(const Book * Search, int ID_Gender){
               }
 }
 
-void Show_author(const Book * Show_Author){/*Buscar los libros que compartan autor*/
+void Show_author(Book const * Show_Author){/*Buscar los libros que compartan autor*/
        char author[MAX_AUTOR];
        char YesNot;
        int author_long;
        int string_long;
-       printf("¿Quieres buscar un libro por su autor?: ");
+       printf("¿Quieres buscar un libro por su autor? s(Sí) o n(no): ");
        scanf(" %c",&YesNot);//pongo espacio a las a %c debido a que es una pregunta y al introducir el si o no se necesita el enter que es un \n y hay que eliminarlo
               if (YesNot == 's'){
                      printf("Nombre del autor que quieres buscar sus libros: ");
@@ -225,26 +225,25 @@ void Show_author(const Book * Show_Author){/*Buscar los libros que compartan aut
                      author_long = strlen(author)-1;// aqui en int author_long guardamos la cadena de author que nos da el usuario y el -1 por el \0
                      
                      for (int i =0; i < MAX_STOCK; i++){
-                            if(strlen(Show_Author->author) <= author_long){//
+                            if(strlen(Show_Author->author) <= author_long){//en esta linea es donde hacemos la comparacion de los nombre de los autores, si es asi la funcion dara 0 haciendo que pase al siguiente for
                                    string_long = 0;
                             }else{
                                    string_long = strlen(Show_Author->author) - author_long;
 
                             }
                             for (int n = 0; n <= string_long; ++n){//n de Next de siguiente autor
-                                   if (strcmp(author, Show_Author[i].author) == 0){
-                                          ShowLibrary(Show_Author+i);
+                                   if (strncmp(author, Show_Author->author+n, author_long) == 0){/*En este bucle for es el que se encarga de buscar en la libreria el autor que es igual y mostrarlo por ello el showlibrary(Show_Author+i) que mostrara el libro en la cual coincida con la*/
+                                          ShowLibrary(Show_Author);
                                    }
                             }
+                            Show_Author++; /*Para pasar al siguiente libro porque al pasarlo por referencia pasa el 1° libro*/
                      }
               }      
 }
-void Show_author_CommandLine(const Book * Show_Author, char name[MAX_AUTOR]){/*Esta funcion tiene la misma manera de funcionar que dentro del programa solo que por tenemos que darle a la funcion el autor introducido mediante un char */
-       char author[MAX_AUTOR];
-       author[MAX_AUTOR] = name[MAX_AUTOR];
+void Show_author_CommandLine(Book const * Show_Author, char * author){/*Esta funcion tiene la misma manera de funcionar que dentro del programa solo que por tenemos que darle a la funcion el autor introducido mediante un char */
        int author_long;
        int string_long;
-              fgets(name, sizeof(MAX_AUTOR), stdin);
+              fgets(author, sizeof(MAX_AUTOR), stdin);
                      author_long = strlen(author)-1;// aqui en int author_long guardamos la cadena de author que nos da el usuario y el -1 por el \0
                      
                      for (int i =0; i < MAX_STOCK; i++){
@@ -255,16 +254,17 @@ void Show_author_CommandLine(const Book * Show_Author, char name[MAX_AUTOR]){/*E
 
                             }
                             for (int n = 0; n <= string_long; ++n){//n de Next de siguiente autor
-                                   if (strncmp(author, Show_Author[i].author+n,author_long) == 0){
-                                          ShowLibrary(&Show_Author[n]);
+                                   if (strncmp(author, Show_Author->author + n,author_long) == 0){
+                                          ShowLibrary(Show_Author);
                                    }
                             }
+                            Show_Author++;
                      }
  }
 
 
 void book_Library(Book * books_add, int add_id, char * add_title, char * add_author, float add_price, int add_gender, int add_capacity_available){/*Con esta funcion haremos que cada uno de los libros que tenemos y los proximos que se agreguase se guarden en la memoria reservada anteriormente, con una direccion de memoria que hace referencia al espacio en el que va a estar dentro de la reserva y los datos que van a ocupar reservadas por el sizeof */
-       books_add->ID = add_id;
+       books_add->ID = add_id;/**/
        strcpy(books_add->title, add_title);
        strcpy(books_add->author, add_author);
        books_add->price = add_price;
@@ -272,37 +272,43 @@ void book_Library(Book * books_add, int add_id, char * add_title, char * add_aut
        books_add->capacity_available = add_capacity_available;
 }
 void add_book_Library(Book * new_books_add){/*Esta funcion es la que vamos a llamar para agregar un libro a nuestra libreria dentro de la memoria reservada por lo que hay que hacer el realloc*/
-       MAX_STOCK = MAX_STOCK + 1;
-       new_books_add = (Book*) realloc(new_books_add, sizeof(Book) * (MAX_STOCK));
-       if (new_books_add == NULL){
-              printf("ERROR FATAL, no hay memoria.\n");
+       char YesNot;
+       printf("¿Quieres buscar un libro por su autor? s(Sí) o n(no): ");
+       scanf(" %c",&YesNot);
+       if (YesNot == 's'){
+              MAX_STOCK = MAX_STOCK + 1;
+              new_books_add = (Book*) realloc(new_books_add, sizeof(Book) * (MAX_STOCK));
+              if (new_books_add == NULL){
+                     printf("ERROR FATAL, no hay memoria.\n");
               return;
+              }
+              Book Book_new;/*Al ser Book un struct de varios tipos de datos, que debe tener el nuevo libro y para obtener esa referencia se le da una variable Book_new*/
+              printf("Añade los datos\n");
+              printf("Id del libro: ");
+              scanf(" %d",&Book_new.ID);
+              printf("Titulo del libro: ");
+              scanf(" ");
+              fgets(Book_new.title, MAX_TITLE, stdin);
+              printf("Autor del libro: ");
+              scanf(" ");
+              fgets(Book_new.author, MAX_AUTOR, stdin);
+              printf("Precio: ");
+              scanf("%f",&Book_new.price);
+              printf("Genero (0 = Ficcion, 1 = No Ficcion, 2 = Poesia, 3 = Teatro, 4 = Ensayo): ");
+              scanf("%u",&Book_new.gender);
+              printf("Cantidad de existencias: ");
+              scanf("%d",&Book_new.capacity_available);
+              book_Library(&new_books_add[MAX_STOCK -1],Book_new.ID,Book_new.title,Book_new.author,Book_new.price,Book_new.gender,Book_new.capacity_available);
        }
-       Book Book_new;/*Al ser Book un struct de varios tipos de datos, que debe tener el nuevo libro y para obtener esa referencia se le da una variable Book_new*/
-       printf("Añade los datos\n");
-       printf("Id del libro: ");
-       scanf(" %d",&Book_new.ID);
-       printf("Titulo del libro: ");
-       scanf(" ");
-       fgets(Book_new.title, MAX_TITLE, stdin);
-       printf("Autor del libro: ");
-       scanf(" ");
-       fgets(Book_new.author, MAX_AUTOR, stdin);
-       printf("Precio: ");
-       scanf("%f",&Book_new.price);
-       printf("Genero (0 = Ficcion, 1 = No Ficcion, 2 = Poesia, 3 = Teatro, 4 = Ensayo): ");
-       scanf("%u",&Book_new.gender);
-       printf("Cantidad de existencias: ");
-       scanf("%d",&Book_new.capacity_available);
-       book_Library(&new_books_add[MAX_STOCK -1],Book_new.ID,Book_new.title,Book_new.author,Book_new.price,Book_new.gender,Book_new.capacity_available);
 }
-void Show_P6_TOTAL(Book * p6_total){
+void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar el main con una funcion basica que llame a todas las demas*/
        for(int i = 0; i < MAX_STOCK; i++){
               ShowLibrary(p6_total+i);//doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle
        }
        Search_ID(p6_total);
        IncreaseCapacity(p6_total);
        Search_Gender(p6_total);
+       Show_author(p6_total);
        add_book_Library(p6_total);
 }
 
@@ -374,6 +380,7 @@ void Show_P6_TOTAL(Book * p6_total){
        }else if (argcount == 3){
               int id = 0;
               id = atoi(argvalue[2]);
+              //fgets()
                      if (strcmp(argvalue[1], "mostrar") == 0){
                             if (id == 0){
                                    for(int i = 0; i < MAX_STOCK; i++){
@@ -386,6 +393,7 @@ void Show_P6_TOTAL(Book * p6_total){
                             Search_Gender_CommandLine(books, id);
 
                      }else if (strcmp(argvalue[1], "autor") == 0){
+
                             Show_author_CommandLine(books, argvalue[2]);
                      }else{
                             printf("No se puede mostrar esta categoria requerida");
@@ -405,8 +413,8 @@ void Show_P6_TOTAL(Book * p6_total){
                             }
                      }
 
-       }else{
-              printf("Error demasiados argumentos por lineas de comandos");
+       }else if (argcount >= 5){
+              printf("Error demasiados argumentos por lineas de comandos\n");
               return 0;
        }
 
