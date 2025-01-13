@@ -393,7 +393,7 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
                             Search_Gender_CommandLine(books, id);
 
                      }else if (strcmp(argvalue[1], "autor") == 0){
-
+                            
                             Show_author_CommandLine(books, argvalue[2]);
                      }else{
                             printf("No se puede mostrar esta categoria requerida");
