@@ -66,27 +66,8 @@ void Search_ID(Book const * IDSearch_Book, int ID){/*Le damos a la funcion void 
               printf("Error no existe ese ID introducido\n");
               }
 }   
-/*En esta fucion es similar a la anterior, pero esta recibe un dato mas que es la capacidad que tenemos guardada de los libros, entonces en esta funcion hacemos una comparacion del ID y de la capacidad entonces devolvera el libro que tiene el ID introducido y los libros que tengan esa capacidad en el almacen */
-void Search_ID_Quant_CommandLine(Book const * ID_CapacitySearch_Book, int ID, int capacity){/*En esta funcion que recibe un ID y una cantidad que se lo damos a la */
-              if (ID >= 0 && ID <= MAX_STOCK){/*realizamos una criba de valores que el numero debe de ser entre el 0 y el 40*/
-                     for(int i = 0; i < MAX_STOCK; i++){
-                            if (ID_CapacitySearch_Book[i].ID == ID){/*Este bucle realiza la comparacion del id intoducido por el usuario y el que tenemos dentro de nuestro arrays books. En esta funlinea pongo .ID y no -> porque le doy cda uno de los ID de nuestros libros accedianedo a nuestros libros mediante el [] y que se va moviendo en toda ella mediante la i del bucle*/
-                                   ShowLibrary(&ID_CapacitySearch_Book[i]);
-                            }
-                            if (ID_CapacitySearch_Book[i].capacity_available == capacity){/*Funcion IF que se realiza una comparacion de cada la capacidad de cada uno de los libro de nuestro stock de books llamado "ID_CapacitySearch_Book", igualando el solo las unidades que tenemos de cada libro y la capacidad introducida por linea de comandos, por lo cual si se cumple imprime el libro */
-                                   ShowLibrary(&ID_CapacitySearch_Book[i]);
-                            }
-                     }
 
-              }else{
-              printf("Error no existe ese ID o Cantidad introducido\n");
-              }
-}               
-
-int Search_IDIncrease(Book const * IDSearch_Book){/*En esta funcion es donde queremos que el libro con un ID dado por el usuario, incremente su capacidad y se vea lo cuantos libros a agregado.*/
-       int IDBookIncrease;
-              printf("¿ID del libro que quieres aumentar su cantidad? del (1 al 40): ");//preguntamos el id del libro
-              scanf(" %d",&IDBookIncrease);
+int Search_IDIncrease(Book const * IDSearch_Book, int IDBookIncrease){/*En esta funcion es donde queremos que el libro con un ID dado por el usuario, incremente su capacidad y se vea lo cuantos libros a agregado.*/
               if (IDBookIncrease >= 0 && IDBookIncrease <= MAX_STOCK){//realizamos una criba de valores que el numero debe de ser entre el 0 y el 40
                      for(int i = 0; i < MAX_STOCK; i++){
                             if (IDSearch_Book[i].ID == IDBookIncrease){/*Este bucle realiza la comparacion del id intoducido por el usuario y el que tenemos*/
@@ -101,13 +82,8 @@ int Search_IDIncrease(Book const * IDSearch_Book){/*En esta funcion es donde que
 }         
 
 
-void IncreaseCapacity(Book * increased_book){/*En esta funcion no se utiliza el const debido a que incrementamos un valor del array que recibe la funcion, por ello no ponemos const*/
-       int num_to_increase;
-       int ID_to_increase;
-              ID_to_increase = Search_IDIncrease(increased_book);/*guardo en la variable ID_to_increase la el return de la funcion Search_IDIncrease*/
-       /*Que he creado para que pregunte cual es el ID del libro a Incrementar*/
-              printf("¿Cuanto quieres aumentar la cantidad del libro?: ");
-              scanf(" %d",&num_to_increase);
+void IncreaseCapacity(Book * increased_book,int ID_to_increase,int num_to_increase){/*En esta funcion no se utiliza el const debido a que incrementamos un valor del array que recibe la funcion, por ello no ponemos const*/
+              ID_to_increase = Search_IDIncrease(increased_book,ID_to_increase);/*guardo en la variable ID_to_increase la el return de la funcion Search_IDIncrease*/
               --ID_to_increase;/*Aqui reduzco el valor que recibo de Search_IDIncrease porque da un número entre 1 y 40 y mi arrays es de 40 espacios que va del 0 al 39. Utilizo las flechas por le estoy diciendo*/
               (increased_book + ID_to_increase)->capacity_available = increased_book[ID_to_increase].capacity_available + num_to_increase;
        /* En esta linea donde le doy a el puntero increased_book que le he dado el struct books que dentro tiene el arrays books
@@ -214,10 +190,16 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
                      scanf(" %d",&IDBook);
                      Search_ID(p6_total, IDBook);/*llamamos a la funcion buscar por ID, dandole por referencia la biblioteca completa y el id del libro que queremos buscar en la biblioteca*/
               }
-       printf("¿Quieres aumentar el stock de un libro? s(Sí) o n(no): ");
-       scanf(" %c",&YesNot);
-       if (YesNot == 's'){
-              IncreaseCapacity(p6_total);
+       int num_to_increase;
+       int ID_to_increase;
+              printf("¿Quieres aumentar el stock de un libro? s(Sí) o n(no): ");
+              scanf(" %c",&YesNot);
+              if (YesNot == 's'){
+                     printf("¿ID del libro que quieres aumentar su cantidad? del (1 al 40): ");//preguntamos el id del libro
+                     scanf(" %d",&ID_to_increase);
+                     printf("¿Cuanto quieres aumentar la cantidad del libro?: ");
+                     scanf(" %d",&num_to_increase);
+                            IncreaseCapacity(p6_total,ID_to_increase,num_to_increase);
        }
        int gender;
               printf("¿Quieres buscar un libro por su genero? s(Sí) o n(no): ");/*preguntamos si quiere buscar un libro por su genero*/
@@ -295,15 +277,14 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
        }
 
        if (argcount == 1){
-              
-              printf("\n<-- Instrucciones para utilizar el programa -->\n\n");
-              printf("Para seguir estas intrucciones debes de compilar el programa con el nombre P6_biblio_mejorada_SamuelCariasRamos\n\n");
-              printf("\t Para visualizar toda la biblioteca ./P6_GestionBiblioteca_RubenGuillenRojas mostrar\n");
-              printf("\t Para visualizar un solo libro ./P6_GestionBiblioteca_RubenGuillenRojas mostrar [ID del libro]\n");
-              printf("\t Para añadir sotck a un libro ./P6_GestionBiblioteca_RubenGuillenRojas stock [ID del libro] [Cantidad a añadir]\n");
-              printf("\t Para visualizar todos los libros de una categoria ./P6_GestionBiblioteca_RubenGuillenRojas categoria [0 FICTION, 1 NON_FICTION, 2 POETRY, 3 THEATER, 4 ESSAY]\n");
-              printf("\t Para visualizar un libro por autor ./P6_GestionBiblioteca_RubenGuillenRojas autor [nombre del autor]\n");
-              printf("\t Para añadir un libro a la biblioteca ./P6_GestionBiblioteca_RubenGuillenRojas añadir\n\n");
+              printf("\t\tInstrucciones para utilizar el programa. \n\n");
+              printf("\tPara ver cada uno de los libros de la biblioteca, escribe: ./(Nombre del programa compilado) mostrar.\n\n");
+              printf("\tPara ver el programa completamente escribe: ./(Nombre del programa compilado) mostrar todo.\n\n");
+              printf("\tPara visualizar un solo libro, escribe: ./(Nombre del programa compilado) mostrar [ID del libro].\n\n");
+              printf("\tPara añadir stock a un libro, escribe: ./(Nombre del programa compilado) stock [ID del libro] [Cantidad a añadir].\n\n");
+              printf("\tPara visualizar todos los libros de una categoria, escribe: ./(Nombre del programa compilado) categoria (1 Ficcion, 2 No Ficcion, 3 Poesia, 4 Teatro, 5 Ensayo).\n\n");
+              printf("\tPara ver los libros escritos por un autor, escribe: ./(Nombre del programa compilado) autor nombre del autor(entrecomillas).\n\n");
+              printf("\tPara añadir un libro a la biblioteca escribe: ./(Nombre del programa compilado) añadir.\n\n");
        }else if (argcount == 2){
               if (strcmp(argvalue[1], "mostrar") == 0){
                      for(int i = 0; i < MAX_STOCK; i++){
@@ -316,20 +297,20 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
                             ShowLibrary(books+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle*/
                    }
               }
-
+              /*Tenemos aqui la posibilidad de tener 3 argumentos por lineas de comando pidiendo mostrar un libro por su ID, por su categoria y por su autor*/
        }else if (argcount == 3){
-              int id = 0;
-              id = atoi(argvalue[2]);
+              int id_gender = 0;
+              id_gender = atoi(argvalue[2]);/*El atoi convierte el valor escrito en la linea de comandos y lo guarda en id*/
                      if (strcmp(argvalue[1], "mostrar") == 0){
-                            if (id == 0){
-                                   for(int i = 0; i < MAX_STOCK; i++){
-                                          ShowLibrary(books+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle*/
-                                   }
+                            if (strcmp(argvalue[2], "todo") == 0){
+                                   Show_P6_TOTAL(books);
+                            }else if (id_gender == 0){
+                                   printf("Ese id no exite");;
                             }else{
-                                   Search_ID(books, id);
+                                   Search_ID(books, id_gender);
                             }
                      }else if (strcmp(argvalue[1], "categoria") == 0){
-                            Search_Gender(books, id);
+                            Search_Gender(books, id_gender);/*llamamos a la funcion, dandole los libros y el id que en este caso es categoria*/
 
                      }else if (strcmp(argvalue[1], "autor") == 0){
                             Show_author(books, argvalue[2]);
@@ -337,17 +318,15 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
                             printf("No se puede mostrar esta categoria requerida");
                      }
        }else if (argcount == 4){
-              int id = 0;
-              id = atoi(argvalue[2]);
-              int id_stock = 0;
-              id_stock = atoi(argvalue[3]);
-                     if (strcmp(argvalue[1], "stock") == 0){
+              if (strcmp(argvalue[1], "stock") == 0){
+                     int id = 0;
+                     id = atoi(argvalue[2]);/*El atoi convierte el valor escrito en la linea de comandos y lo guarda en id*/
+                     int increase_stock = 0;
+                     increase_stock = atoi(argvalue[3]);
                             if (id == 0){
-                                   for(int i = 0; i < MAX_STOCK; i++){
-                                          ShowLibrary(books+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle*/
-                                   }
+                                   printf("Ese id no exite");
                             }else{
-                                   Search_ID_Quant_CommandLine(books, id, id_stock);
+                                   IncreaseCapacity(books, id, increase_stock);/*llamo a la funcion incrementar y le damos el argvalue[2] = id y argvalue[3] que es la cantidad a incrementar en el stock de un libro*/
                             }
                      }
        }else if (argcount >= 5){
