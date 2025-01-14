@@ -176,10 +176,6 @@ void book_Library(Book * books_add, int add_id, char * add_title, char * add_aut
        books_add->capacity_available = add_capacity_available;
 }
 void add_book_Library(Book * new_books_add){/*Esta funcion es la que vamos a llamar para agregar un libro a nuestra libreria dentro de la memoria reservada por lo que hay que hacer el realloc*/
-       /*char YesNot;
-              printf("¿Quieres aumentar el stock de un libro? s(Sí) o n(no): ");
-              scanf(" %c",&YesNot);
-                     if (YesNot == 's'){*/
                      MAX_STOCK = MAX_STOCK + 1;/*Aumentamos aqui la variable global MAX_STOCK para que la reserva de memoria del realloc sea para un libro mas que luego le asignaremos sus valores*/
                      new_books_add = (Book*) realloc(new_books_add, sizeof(Book) * (MAX_STOCK));
                      if (new_books_add == NULL){
@@ -191,25 +187,24 @@ void add_book_Library(Book * new_books_add){/*Esta funcion es la que vamos a lla
                      printf("Id del libro: ");
                      scanf(" %d",&Book_new.ID);
                      printf("Titulo del libro: ");
-                     scanf(" ");/*Es un scanf para que depure cualquier \n mal almacenado*/
-                     fgets(Book_new.title, MAX_TITLE, stdin);
+                     scanf(" %[^\n]",Book_new.title);/*Este scanf del estilo "%[^\n]" permite al scanf guardar lo escrito con los espacios de un titulo o nombre del autor*/
+                     /*fgets(Book_new.title, MAX_TITLE, stdin); No he usado el Fgets porque al guardar el valor dado hacia un \n que hacia que se viera mal*/
                      printf("Autor del libro: ");
-                     scanf(" ");/*Es un scanf para que depure cualquier \n mal almacenado*/
-                     fgets(Book_new.author, MAX_AUTOR, stdin);
+                     scanf(" %[^\n]",Book_new.author);/*Este scanf del estilo "%[^\n]" permite al scanf guardar lo escrito con los espacios de un titulo o nombre del autor*/
+                     /*fgets(Book_new.author, MAX_AUTOR, stdin); No he usado el Fgets porque al guardar el valor dado hacia un \n que hacia que se viera mal*/
                      printf("Precio: ");
-                     scanf("%f",&Book_new.price);
+                     scanf(" %f",&Book_new.price);
                      printf("Genero (0 = Ficcion, 1 = No Ficcion, 2 = Poesia, 3 = Teatro, 4 = Ensayo): ");
-                     scanf("%u",&Book_new.gender);
+                     scanf(" %u",&Book_new.gender);
                      printf("Cantidad de existencias: ");
-                     scanf("%d",&Book_new.capacity_available);
-                     book_Library(&new_books_add[MAX_STOCK -1],Book_new.ID,Book_new.title,Book_new.author,Book_new.price,Book_new.gender,Book_new.capacity_available);
-              
+                     scanf(" %d",&Book_new.capacity_available);
+                     book_Library(&new_books_add[MAX_STOCK -1],Book_new.ID,Book_new.title,Book_new.author,Book_new.price,Book_new.gender,Book_new.capacity_available);           
 }
 
 void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar el main con una funcion basica que llame a todas las demas*/
        char YesNot;
        for(int i = 0; i < MAX_STOCK; i++){
-              ShowLibrary(p6_total+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle*/
+              ShowLibrary(p6_total+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle, mostrando cada uno de los libros que tenemos*/
        }
        int IDBook;
               printf("¿Quieres buscar un libro? s(Sí) o n(no): ");/*preguntamos si quiere buscar un libro*/
@@ -217,7 +212,7 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
               if (YesNot == 's'){
                      printf("¿ID del libro a buscar? del (1 al 40): ");/*preguntamos el id del libro*/
                      scanf(" %d",&IDBook);
-                     Search_ID(p6_total, IDBook);
+                     Search_ID(p6_total, IDBook);/*llamamos a la funcion buscar por ID, dandole por referencia la biblioteca completa y el id del libro que queremos buscar en la biblioteca*/
               }
        printf("¿Quieres aumentar el stock de un libro? s(Sí) o n(no): ");
        scanf(" %c",&YesNot);
@@ -235,7 +230,7 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
                      printf("\t 4 Teatro\n");
                      printf("\t 5 Ensayo\n");
                      scanf(" %d",&gender);
-              Search_Gender(p6_total,gender);
+              Search_Gender(p6_total,gender);/*llamamos a la funcion buscar por genero, dandole por referencia la biblioteca completa y el genero de los libros que hay de ese tipo en la biblioteca*/
               }
        char author[MAX_AUTOR];
        int author_long;
@@ -245,10 +240,9 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
               if (YesNot == 's'){
                      printf("Nombre del autor que quieres buscar sus libros: ");
                      scanf(" "); /*Con este scanf vacio evitamos cualquier \n que se haya guardado mal*/
-                     fgets(author, sizeof(author), stdin);
-                     Show_author(p6_total, author);
+                     fgets(author, sizeof(author), stdin);/*El fgets copia los escrito por el usuario con los espacios y todo, guardandolo en este caso en author*/
+                     Show_author(p6_total, author);/*llamamos a la funcion buscar libros por autor, dandole por referencia la biblioteca completa y el autor de los libros que hay del mismo en la biblioteca*/
               }     
-       //add_book_Library(p6_total);
 }
 
  int main(int argcount, char ** argvalue){
@@ -301,8 +295,15 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
        }
 
        if (argcount == 1){
-              Show_P6_TOTAL(books);
-
+              
+              printf("\n<-- Instrucciones para utilizar el programa -->\n\n");
+              printf("Para seguir estas intrucciones debes de compilar el programa con el nombre P6_biblio_mejorada_SamuelCariasRamos\n\n");
+              printf("\t Para visualizar toda la biblioteca ./P6_GestionBiblioteca_RubenGuillenRojas mostrar\n");
+              printf("\t Para visualizar un solo libro ./P6_GestionBiblioteca_RubenGuillenRojas mostrar [ID del libro]\n");
+              printf("\t Para añadir sotck a un libro ./P6_GestionBiblioteca_RubenGuillenRojas stock [ID del libro] [Cantidad a añadir]\n");
+              printf("\t Para visualizar todos los libros de una categoria ./P6_GestionBiblioteca_RubenGuillenRojas categoria [0 FICTION, 1 NON_FICTION, 2 POETRY, 3 THEATER, 4 ESSAY]\n");
+              printf("\t Para visualizar un libro por autor ./P6_GestionBiblioteca_RubenGuillenRojas autor [nombre del autor]\n");
+              printf("\t Para añadir un libro a la biblioteca ./P6_GestionBiblioteca_RubenGuillenRojas añadir\n\n");
        }else if (argcount == 2){
               if (strcmp(argvalue[1], "mostrar") == 0){
                      for(int i = 0; i < MAX_STOCK; i++){
@@ -312,7 +313,7 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
                      add_book_Library(books);
                      ShowLibrary(&books[MAX_STOCK - 1]);
                      for(int i = 0; i < MAX_STOCK; i++){
-                     ShowLibrary(books+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle*/
+                            ShowLibrary(books+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle*/
                    }
               }
 
