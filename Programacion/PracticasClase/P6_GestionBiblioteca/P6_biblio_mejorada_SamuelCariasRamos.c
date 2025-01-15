@@ -27,30 +27,30 @@ typedef struct{
  	int capacity_available;
 }Book;
 
-void ShowLibrary(const Book * print_book){
-	printf("ID del libro: %d.\n",print_book->ID);
-	printf("\tTitulo: %s. \n",print_book->title);
-	printf("\tAutor: %s. \n",print_book->author);
-	printf("\tPrecio: %f.\n",print_book->price);
+void ShowLibrary(Book const * print_book){
+	printf("ID del libro: %d\n",print_book->ID);
+	printf("\tTitulo: %s \n",print_book->title);
+	printf("\tAutor: %s \n",print_book->author);
+	printf("\tPrecio: %f\n",print_book->price);
 	printf("\tCategoria: ");
               switch (print_book->gender){
               case 0:
-                     printf("Ficcion.\n");
+                     printf("Ficcion\n");
                      break;
               case 1:
-                     printf("No Ficcion.\n");
+                     printf("No Ficcion\n");
                      break;
               case 2:
-                     printf("Poesia.\n");
+                     printf("Poesia\n");
                      break;
               case 3:
-                     printf("Teatro.\n");
+                     printf("Teatro\n");
                      break;
               case 4:
-                     printf("Ensayo.\n");
+                     printf("Ensayo\n");
                      break;
               }
-	printf("\tDisponibilidad: %d.\n",print_book->capacity_available);
+	printf("\tDisponibilidad: %d\n",print_book->capacity_available);
        printf("\n");
 }
 
@@ -151,12 +151,12 @@ void book_Library(Book * books_add, int add_id, char * add_title, char * add_aut
        books_add->gender = add_gender;
        books_add->capacity_available = add_capacity_available;
 }
-void add_book_Library(Book * new_books_add){/*Esta funcion es la que vamos a llamar para agregar un libro a nuestra libreria dentro de la memoria reservada por lo que hay que hacer el realloc*/
+Book * add_book_Library(Book * new_books_add){/*Esta funcion es la que vamos a llamar para agregar un libro a nuestra libreria dentro de la memoria reservada por lo que hay que hacer el realloc*/
                      MAX_STOCK = MAX_STOCK + 1;/*Aumentamos aqui la variable global MAX_STOCK para que la reserva de memoria del realloc sea para un libro mas que luego le asignaremos sus valores*/
                      new_books_add = (Book*) realloc(new_books_add, sizeof(Book) * (MAX_STOCK));
                      if (new_books_add == NULL){
                             printf("ERROR FATAL, no hay memoria.\n");
-                     return;
+                     return EXIT_SUCCESS;
                      }
                      Book Book_new;/*Al ser Book un struct de varios tipos de datos, que debe tener el nuevo libro y para obtener esa referencia se le da una variable Book_new, que almacenara cada una de ellas y luego referenciaremos para que se guarden los datos*/
                      printf("Añade los datos del nuevo libro.\n");
@@ -174,10 +174,11 @@ void add_book_Library(Book * new_books_add){/*Esta funcion es la que vamos a lla
                      scanf(" %u",&Book_new.gender);
                      printf("Cantidad de existencias: ");
                      scanf(" %d",&Book_new.capacity_available);
-                     book_Library(&new_books_add[MAX_STOCK -1],Book_new.ID,Book_new.title,Book_new.author,Book_new.price,Book_new.gender,Book_new.capacity_available);           
+                     book_Library(&new_books_add[MAX_STOCK -1],Book_new.ID,Book_new.title,Book_new.author,Book_new.price,Book_new.gender,Book_new.capacity_available);
+                     return new_books_add;           
 }
 
-void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar el main con una funcion basica que llame a todas las demas*/
+Book * Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar el main con una funcion basica que llame a todas las demas*/
        char YesNot;
        for(int i = 0; i < MAX_STOCK; i++){
               ShowLibrary(p6_total+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle, mostrando cada uno de los libros que tenemos*/
@@ -224,7 +225,10 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
                      scanf(" "); /*Con este scanf vacio evitamos cualquier \n que se haya guardado mal*/
                      fgets(author, sizeof(author), stdin);/*El fgets copia los escrito por el usuario con los espacios y todo, guardandolo en este caso en author*/
                      Show_author(p6_total, author);/*llamamos a la funcion buscar libros por autor, dandole por referencia la biblioteca completa y el autor de los libros que hay del mismo en la biblioteca*/
-              }     
+              }
+       Book * New_Library_Direction;          
+       New_Library_Direction = add_book_Library(p6_total);
+       return New_Library_Direction;
 }
 
  int main(int argcount, char ** argvalue){
@@ -275,7 +279,8 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
               printf("ERROR FATAL, no hay memoria.\n");
               return EXIT_FAILURE;
        }
-
+       Book * New_Library_Direction;
+       printf("%p",&books);
        if (argcount == 1){
               printf("\t\tInstrucciones para utilizar el programa. \n\n");
               printf("\tPara ver cada uno de los libros de la biblioteca, escribe: ./(Nombre del programa compilado) mostrar.\n\n");
@@ -291,11 +296,11 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
                      ShowLibrary(books+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle*/
                    }
               }else if(strcmp(argvalue[1], "añadir") == 0){
-                     add_book_Library(books);
-                     ShowLibrary(&books[MAX_STOCK - 1]);
-                     for(int i = 0; i < MAX_STOCK; i++){
-                            ShowLibrary(books+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle*/
-                   }
+                     New_Library_Direction = add_book_Library(books);
+                     //ShowLibrary(&books[MAX_STOCK - 1]);
+                            for(int i = 0; i < MAX_STOCK; i++){
+                                   ShowLibrary(New_Library_Direction+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle*/
+                            }
               }
               /*Tenemos aqui la posibilidad de tener 3 argumentos por lineas de comando pidiendo mostrar un libro por su ID, por su categoria y por su autor*/
        }else if (argcount == 3){
@@ -303,7 +308,10 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
               id_gender = atoi(argvalue[2]);/*El atoi convierte el valor escrito en la linea de comandos y lo guarda en id*/
                      if (strcmp(argvalue[1], "mostrar") == 0){
                             if (strcmp(argvalue[2], "todo") == 0){
-                                   Show_P6_TOTAL(books);
+                                   New_Library_Direction = Show_P6_TOTAL(books);
+                                   for(int i = 0; i < MAX_STOCK; i++){
+                                   ShowLibrary(New_Library_Direction+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle*/
+                                   }
                             }else if (id_gender == 0){
                                    printf("Ese id no exite");;
                             }else{
@@ -334,6 +342,6 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
               return 0;
        }
 
-              free(books);
+              free(New_Library_Direction);
  	return 0;
 }
