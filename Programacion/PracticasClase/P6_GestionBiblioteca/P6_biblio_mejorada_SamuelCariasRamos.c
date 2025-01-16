@@ -277,14 +277,15 @@ void Show_P6_TOTAL(Book * p6_total){/*Esta funcion esta creada para simplificar 
        }
 
        if (argcount == 1){
+              printf("\n");
               printf("\t\tInstrucciones para utilizar el programa. \n\n");
-              printf("\tPara ver cada uno de los libros de la biblioteca, escribe: ./(Nombre del programa compilado) mostrar.\n\n");
-              printf("\tPara ver el programa completamente escribe: ./(Nombre del programa compilado) mostrar todo.\n\n");
-              printf("\tPara visualizar un solo libro, escribe: ./(Nombre del programa compilado) mostrar [ID del libro].\n\n");
-              printf("\tPara añadir stock a un libro, escribe: ./(Nombre del programa compilado) stock [ID del libro] [Cantidad a añadir].\n\n");
-              printf("\tPara visualizar todos los libros de una categoria, escribe: ./(Nombre del programa compilado) categoria (1 Ficcion, 2 No Ficcion, 3 Poesia, 4 Teatro, 5 Ensayo).\n\n");
-              printf("\tPara ver los libros escritos por un autor, escribe: ./(Nombre del programa compilado) autor nombre del autor(entrecomillas).\n\n");
-              printf("\tPara añadir un libro a la biblioteca escribe: ./(Nombre del programa compilado) añadir.\n\n");
+              printf("\tPara ver cada uno de los libros de la biblioteca, escribe: ./(Nombre del programa compilado) mostrar\n\n");
+              printf("\tPara ver el programa completamente escribe: ./(Nombre del programa compilado) mostrar todo\n\n");
+              printf("\tPara visualizar un solo libro, escribe: ./(Nombre del programa compilado) mostrar [ID del libro]\n\n");
+              printf("\tPara añadir stock a un libro, escribe: ./(Nombre del programa compilado) stock [ID del libro] [Cantidad a añadir]\n\n");
+              printf("\tPara visualizar todos los libros de una categoria, escribe: ./(Nombre del programa compilado) categoria (1 Ficcion, 2 No Ficcion, 3 Poesia, 4 Teatro, 5 Ensayo)\n\n");
+              printf("\tPara ver los libros escritos por un autor, escribe: ./(Nombre del programa compilado) autor nombre del autor(entrecomillas)\n\n");
+              printf("\tPara añadir un libro a la biblioteca escribe: ./(Nombre del programa compilado) añadir\n\n");
        }else if (argcount == 2){
               if (strcmp(argvalue[1], "mostrar") == 0){
                      for(int i = 0; i < MAX_STOCK; i++){
