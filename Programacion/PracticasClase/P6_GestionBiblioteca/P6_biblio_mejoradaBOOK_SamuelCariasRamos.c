@@ -27,32 +27,7 @@ typedef struct{
  	int capacity_available;
 }Book;
 
-void ShowLibrary(Book const * print_book){
-	printf("ID del libro: %d\n",print_book->ID);
-	printf("\tTitulo: %s \n",print_book->title);
-	printf("\tAutor: %s \n",print_book->author);
-	printf("\tPrecio: %f\n",print_book->price);
-	printf("\tCategoria: ");
-              switch (print_book->gender){
-              case 0:
-                     printf("Ficcion\n");
-                     break;
-              case 1:
-                     printf("No Ficcion\n");
-                     break;
-              case 2:
-                     printf("Poesia\n");
-                     break;
-              case 3:
-                     printf("Teatro\n");
-                     break;
-              case 4:
-                     printf("Ensayo\n");
-                     break;
-              }
-	printf("\tDisponibilidad: %d\n",print_book->capacity_available);
-       printf("\n");
-}
+void ShowLibrary(Book const * print_book);
 
 /*En estas funciones void varias de ellas he utilizado "[]" (para acceder a la memoria) debido a esto se utiliza el . y no la ->, esta ultima se utiliza cuando a la direccion de memoria que recibe nuestra funcion void como puntero queremos acceder a ella sin especificar su espacio reservado y al ser una direccion de memoria le ponemos la -> para que vaya al espacio de memoria con el nombre que le hemos dado dentro de la funcion, al igual que el punto pero para que funcione hsy que darle a la funcion llamada la direccion de memoria con el & y el espacio que queremos con el []. Por ello, dependiendo de como queremos acceder a esa direccion de memoria se usa . o ->.*/
 void Search_ID(Book const * IDSearch_Book, int ID);
@@ -184,6 +159,33 @@ Book * Show_P6_TOTAL(Book * p6_total);
 
               free(books);
  	return 0;
+}
+
+void ShowLibrary(Book const * print_book){
+       printf("ID del libro: %d\n",print_book->ID);
+       printf("\tTitulo: %s \n",print_book->title);
+       printf("\tAutor: %s \n",print_book->author);
+       printf("\tPrecio: %f\n",print_book->price);
+       printf("\tCategoria: ");
+              switch (print_book->gender){
+              case 0:
+                     printf("Ficcion\n");
+                     break;
+              case 1:
+                     printf("No Ficcion\n");
+                     break;
+              case 2:
+                     printf("Poesia\n");
+                     break;
+              case 3:
+                     printf("Teatro\n");
+                     break;
+              case 4:
+                     printf("Ensayo\n");
+                     break;
+              }
+       printf("\tDisponibilidad: %d\n",print_book->capacity_available);
+       printf("\n");
 }
 
 void Search_ID(Book const * IDSearch_Book, int ID){/*Le damos a la funcion void en main books de libros y aqui lo recibimos par que funcione la busqueda por ID (Funcion antes realizada en al funcion del programa base) que fue introducido por linea de comandos*/
