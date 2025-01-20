@@ -115,7 +115,7 @@ Book * Show_P6_TOTAL(Book * p6_total);
                                    ShowLibrary(books+i);/*doy el array a la funcion con cada bucle 0 + i que incrementa durante el bucle*/
                             }
               }else{
-                     printf("No se puede mostrar lo requerido, porque no existe dentro del programa");
+                     printf("No se puede mostrar lo requerido");
               }
               /*Tenemos aqui la posibilidad de tener 3 argumentos por lineas de comando pidiendo mostrar un libro por su ID, por su categoria y por su autor*/
        }else if (argcount == 3){
