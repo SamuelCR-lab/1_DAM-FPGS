@@ -1,0 +1,4 @@
+INICIOna línea 1
+INICIOtra línea 2
+INICIOjemplo línea 3
+INICIOtra línea 4
