@@ -1,0 +1,6 @@
+subdir3/subdir3_1.txt:ERROR
+subdir3/subdir3_1.txt:ERROR
+subdir3/subdir3_1.txt:ERROR
+subdir3/subdir3_1.txt:ERROR
+subdir4/subdir4_1.txt:ERROR
+subdir4/subdir4_1.txt:ERROR
