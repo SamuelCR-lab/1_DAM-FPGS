@@ -196,7 +196,6 @@ void Search_ID(Book const * IDSearch_Book, int ID){/*Le damos a la funcion void 
 }   
 
 int Search_IDIncrease(Book const * IDSearch_Book, int IDBookIncrease){/*En esta funcion es donde queremos que el libro con un ID dado por el usuario, incremente su capacidad y se vea lo cuantos libros a agregado.*/
-              
               if (IDBookIncrease >= 0 && IDBookIncrease <= MAX_STOCK){//realizamos una criba de valores que el numero debe de ser entre el 0 y el 40
                      for(int i = 0; i < MAX_STOCK; i++){
                             if (IDSearch_Book[i].ID == IDBookIncrease){/*Este bucle realiza la comparacion del id intoducido por el usuario y el que tenemos*/
@@ -206,9 +205,9 @@ int Search_IDIncrease(Book const * IDSearch_Book, int IDBookIncrease){/*En esta 
                      }
               }else{
                      printf("Error, no existe el ID introducido la libreria va del 1 al 40.\n");
-                     exit(0);
               }
-}         
+              return 0;
+       }         
 
 void IncreaseCapacity(Book * increased_book,int ID_to_increase,int num_to_increase){/*En esta funcion no se utiliza el const debido a que incrementamos un valor del array que recibe la funcion, por ello no ponemos const*/
               ID_to_increase = Search_IDIncrease(increased_book,ID_to_increase);/*guardo en la variable ID_to_increase la el return de la funcion Search_IDIncrease*/
@@ -251,8 +250,8 @@ void Search_Gender(Book * Search, int ID_Gender){/*Esta funcion es muy similar a
 
 
 void Show_author(Book const * Show_Author, char * author){/*Esta funcion tiene la misma manera de funcionar que dentro del programa solo que por tenemos que darle a la funcion el autor introducido mediante un char */
-       int author_long;
-       int string_long;
+       char author_long;
+       char string_long;
        int author_exist = 0;
        author_long = strlen(author)-1;/*Aqui en int author_long guardamos la cadena de author que nos da el usuario y el -1 por el \0*/
               for (int i =0; i < MAX_STOCK; i++){
