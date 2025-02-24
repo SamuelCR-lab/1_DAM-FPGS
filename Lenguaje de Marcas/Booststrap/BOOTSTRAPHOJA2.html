@@ -5,15 +5,59 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+        .color_caja1{
+            background-color: green;
+        }
+        .color_caja2{
+            background-color: orange;
+        }
+
+    </style>
+
+
 </head>
+
+
+
 <body>
 
     <div class="container-fluid">
-        <div class="ro">
-        <div class="col-12 col-sm-12 bg-danger">A</div>
-        <div class="col-12 col-sm-2 bg-primary">B</div>
-        <div class="col-12 col-sm-10 bg-success">C</div>
-    </div>
+        <div class="row">
+            <div class="col">
+                <div class="p-2 border color_caja1 text-center">Header</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-sm-3 offset-md-3"><div class="p-2 border bg-primary">1</div></div>
+            <div class="col-6 col-sm-3 me-md-3"><div class="p-2 border bg-primary">2</div></div>
+            <div class="col-6 col-sm-3"><div class="p-2 border bg-primary">3</div></div>
+            <div class="col-6 col-sm-3 offset-md-6"><div class="p-2 border bg-primary">4</div></div>
+        </div>
+        <div class="row d-none d-sm-block d-md-none">
+            <div class="col"><div class="p-2 border bg-info">Tablet</div></div>
+        </div>
+        <div class="row">
+            <div class="col"><div class="p-2 border bg-secundary">a</div></div>
+            <div class="col"><div class="p-2 border bg-secundary">b</div></div>
+            <div class="col"><div class="p-2 border bg-secundary">c</div></div>
+            <div class="col"><div class="p-2 border bg-secundary">d</div></div>
+        </div>
+        <div class="row d-none d-md-block">
+            <div class="col"><div class="p-2 border bg-info">Desktop</div></div>
+        </div>
+        <div class="row d-block d-sm-none">
+            <div class="col"><div class="p-2 border bg-info">Movil</div></div>
+        </div>
+        <div class="row">
+            <div class="col col-md-3 offset-md-3"><div class="p-2 border color_caja2 text-center">:D</div></div>
+            <div class="col col-md-3 d-none d-sm-block"><div class="p-2 border color_caja2 text-center">:(</div></div>
+        </div>
+        <div class="row">
+            <div class="col">
+            <div class="col color_caja1 text-center d-none d-sm-block">Footer</div>
+        </div>
+        </div>
     </div>
 </body>
 </html>
