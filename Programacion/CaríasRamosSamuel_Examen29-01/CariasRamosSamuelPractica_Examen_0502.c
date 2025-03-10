@@ -11,14 +11,14 @@ int main (){
 			return 0;
 		}
 		int * arr = (int*) malloc(tamanio_arr1 *sizeof(int));
-		if (arr == NULL) return 0;
+		if (arr == NULL) return EXIT_FAILURE;
 			for (int i = 0; i < tamanio_arr1; i++){
 				arr[i] = i + tamanio_arr1;
 			}
 
 		tamanio_arr2 = tamanio_arr1 + arr[0];
 		int * arr_segundario = (int*) malloc(tamanio_arr2 * sizeof(int));
-		if (arr_segundario == NULL) return 0;
+		if (arr_segundario == NULL) return EXIT_FAILURE;
 			for (int i = 0; i < tamanio_arr2; i++){
 				arr_segundario[i] = i + 6;
 			}
