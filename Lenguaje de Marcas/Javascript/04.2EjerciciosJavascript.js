@@ -28,10 +28,12 @@ function exp1(){
 function exp2(){
     let expReg_correo=/\b\w+\@\w+\w{2,3}\b/;
     let correo = prompt("Introduce un correo electrónico:");
+    //let partesCorreo=correo.split("@");
     let resultado = correo.match(expReg_correo);
     if (resultado) {
         document.writeln("Correo es válido. El usuario tiene "+resultado[1].length+" letras.");
     } else {
+        //let partesCorreo=correo.split("@");
         let error = correo.includes("@") ? "dominio incorrecto" : "usuario incorrecto";
         document.writeln("Correo inválido. Error en el "+error);
     }
