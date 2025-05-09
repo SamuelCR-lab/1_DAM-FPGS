@@ -16,7 +16,7 @@ function mostrarDatos(event){
 function load(){
     let boton=document.querySelector("button");
     let boton2=document.getElementById("boton2");
-    let boton3=document.getElementById("boton3")
+    let boton3=document.getElementById("boton3");
     let CuadroTexto=document.getElementById("CuadroTexto");
     let zona=document.getElementById("Zona");
     let formulario=document.getElementById("Formulario");

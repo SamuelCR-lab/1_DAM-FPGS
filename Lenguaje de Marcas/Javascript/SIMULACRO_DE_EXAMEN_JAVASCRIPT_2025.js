@@ -2,7 +2,7 @@ let abecedario="abcdefghijklmnopqrstuvwxyz";
 let letraAdivinar;
 let coordenadaI;
 let coordenadaJ;
-
+let matriz=[[0,1],[0,0]];
 function codificar(letra){
     let numero=0;
     let esta=false;
@@ -30,9 +30,14 @@ function random(numero){
     return Math.floor(Math.random()*(numero+1));
 }
 function colocarCasillas(event){
+    let letra=event.target.value;
     let i=event.target.name[0];
     let j=event.target.name[1];
-    let letra=event.target.value;
+    if (matriz [i][j]===1){
+        document.getElementById(valor)
+
+    }
+
     console.log(i+","+j+"->"+letra);
     if(i==coordenadaI && j==coordenadaJ && letra==letraAdivinar){
         document.getElementById(event.target.name).textContent=letraAdivinar;
@@ -56,5 +61,6 @@ function principal(){
     let letras=document.querySelectorAll(".letra");
     letras.forEach(i=>i.addEventListener("keydown",colocarCasillas)
     );
+    
 }
 window.addEventListener("DOMContentLoaded",principal,false);
