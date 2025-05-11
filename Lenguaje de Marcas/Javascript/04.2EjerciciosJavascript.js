@@ -16,7 +16,10 @@ function exp1(){
             let anio = parseInt(partes[2]);
             let fechaIntroducida = new Date(anio, mes, dia);
             let fechaActual = new Date();
+
+            //La diferencua la devuelve en milisegundos
             let diferencia = fechaActual - fechaIntroducida;
+
             let dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
             document.writeln("Han pasado "+dias+" días desde la fecha ingresada.");
         } else {
@@ -26,10 +29,12 @@ function exp1(){
 function exp2(){
     let expReg_correo=/\b\w+\@\w+\w{2,3}\b/;
     let correo = prompt("Introduce un correo electrónico:");
+    //let partesCorreo=correo.split("@");
     let resultado = correo.match(expReg_correo);
     if (resultado) {
         document.writeln("Correo es válido. El usuario tiene "+resultado[1].length+" letras.");
     } else {
+        //let partesCorreo=correo.split("@");
         let error = correo.includes("@") ? "dominio incorrecto" : "usuario incorrecto";
         document.writeln("Correo inválido. Error en el "+error);
     }
@@ -49,7 +54,11 @@ function exp3(){
 function exp4(){
     let texto = prompt("Introduce una oración:");
     let palabra = prompt("Introduce la palabra a contar:");
-    
+
+    //let palabra="hola";
+    //let partes=texto.split(palabra);
+    //return partes.length(-1);
+    //
     let expReg_palabra = new RegExp(`\\b${palabra}\\b`, "gi");
     let coincidencias = texto.match(expReg_palabra);
 

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Hundir la flota JS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="04.3.3_EJERCICIOS_JAVASCRIPT_06_05_2025.js"></script>
+    <link rel="stylesheet" href="Estilos_04_3_3.css">
+</head>
+<body>
+        <h1>Ejercicios de practica_06_05_2025</h1>
+        <h2>Ejercicio 1</h2>
+        <h2>Esta es el tablero de ataque</h2>
+            <table id="ataque" style="border-color: red;">
+            
+                <tr>
+                    <td><button class="boton" value="01" id="A1a">A1</button></td>
+                    <td><button class="boton" value="02" id="A2a">A2</button></td>
+                    <td><button class="boton" value="03" id="A3a">A3</button></td>
+                    <td><button class="boton" value="04" id="A4a">A4</button></td>
+                    <td><button class="boton" value="05" id="A5a">A5</button></td>
+                    <td><button class="boton" value="06" id="A6a">A6</button></td>
+                    <td><button class="boton" value="07" id="A7a">A7</button></td>
+                    <td><button class="boton" value="08" id="A8a">A8</button></td>
+                    <td><button class="boton" value="09" id="A9a">A9</button></td>
+                    <td><button class="boton" value="10" id="A10a">A10</button></td>
+                </tr>
+                <tr>
+                    <td><button class="boton" value="11" id="B1a">B1</button></td>
+                    <td><button class="boton" value="12" id="B2a">B2</button></td>
+                    <td><button class="boton" value="13" id="B3a">B3</button></td>
+                    <td><button class="boton" value="14" id="B4a">B4</button></td>
+                    <td><button class="boton" value="15" id="B5a">B5</button></td>
+                    <td><button class="boton" value="16" id="B6a">B6</button></td>
+                    <td><button class="boton" value="17" id="B7a">B7</button></td>
+                    <td><button class="boton" value="18" id="B8a">B8</button></td>
+                    <td><button class="boton" value="19" id="B9a">B9</button></td>
+                    <td><button class="boton" value="20" id="B10a">B10</button></td>
+                </tr>
+                <tr>
+                    <td><button class="boton" value="21" id="C1a">C1</button></td>
+                    <td><button class="boton" value="22" id="C2a">C2</button></td>
+                    <td><button class="boton" value="23" id="C3a">C3</button></td>
+                    <td><button class="boton" value="24" id="C4a">C4</button></td>
+                    <td><button class="boton" value="25" id="C5a">C5</button></td>
+                    <td><button class="boton" value="26" id="C6a">C6</button></td>
+                    <td><button class="boton" value="27" id="C7a">C7</button></td>
+                    <td><button class="boton" value="28" id="C8a">C8</button></td>
+                    <td><button class="boton" value="29" id="C9a">C9</button></td>
+                    <td><button class="boton" value="30" id="C10a">C10</button></td>
+                </tr>
+                <tr>
+                    <td><button class="boton" value="31" id="D1a">D1</button></td>
+                    <td><button class="boton" value="32" id="D2a">D2</button></td>
+                    <td><button class="boton" value="33" id="D3a">D3</button></td>
+                    <td><button class="boton" value="34" id="D4a">D4</button></td>
+                    <td><button class="boton" value="35" id="D5a">D5</button></td>
+                    <td><button class="boton" value="36" id="D6a">D6</button></td>
+                    <td><button class="boton" value="37" id="D7a">D7</button></td>
+                    <td><button class="boton" value="38" id="D8a">D8</button></td>
+                    <td><button class="boton" value="39" id="D9a">D9</button></td>
+                    <td><button class="boton" value="40" id="D10a">D10</button></td>
+                </tr>
+
+                <tr>
+                    <td><button class="boton" value="41" id="E1a">E1</button></td>
+                    <td><button class="boton" value="42" id="E2a">E2</button></td>
+                    <td><button class="boton" value="43" id="E3a">E3</button></td>
+                    <td><button class="boton" value="44" id="E4a">E4</button></td>
+                    <td><button class="boton" value="45" id="E5a">E5</button></td>
+                    <td><button class="boton" value="46" id="E6a">E6</button></td>
+                    <td><button class="boton" value="47" id="E7a">E7</button></td>
+                    <td><button class="boton" value="48" id="E8a">E8</button></td>
+                    <td><button class="boton" value="49" id="E9a">E9</button></td>
+                    <td><button class="boton" value="50" id="E10a">E10</button></td>
+                </tr>
+                <tr>
+                    <td><button class="boton" value="51" id="F1a">F1</button></td>
+                    <td><button class="boton" value="52" id="F2a">F2</button></td>
+                    <td><button class="boton" value="53" id="F3a">F3</button></td>
+                    <td><button class="boton" value="54" id="F4a">F4</button></td>
+                    <td><button class="boton" value="55" id="F5a">F5</button></td>
+                    <td><button class="boton" value="56" id="F6a">F6</button></td>
+                    <td><button class="boton" value="57" id="F7a">F7</button></td>
+                    <td><button class="boton" value="58" id="F8a">F8</button></td>
+                    <td><button class="boton" value="59" id="F9a">F9</button></td>
+                    <td><button class="boton" value="60" id="F10a">F10</button></td>
+                </tr>
+                <tr>
+                    <td><button class="boton" value="61" id="G1a">G1</button></td>
+                    <td><button class="boton" value="62" id="G2a">G2</button></td>
+                    <td><button class="boton" value="63" id="G3a">G3</button></td>
+                    <td><button class="boton" value="64" id="G4a">G4</button></td>
+                    <td><button class="boton" value="65" id="G5a">G5</button></td>
+                    <td><button class="boton" value="66" id="G6a">G6</button></td>
+                    <td><button class="boton" value="67" id="G7a">G7</button></td>
+                    <td><button class="boton" value="68" id="G8a">G8</button></td>
+                    <td><button class="boton" value="69" id="G9a">G9</button></td>
+                    <td><button class="boton" value="70" id="G10a">G10</button></td>
+                </tr>
+                <tr>
+                    <td><button class="boton" value="71" id="H1a">H1</button></td>
+                    <td><button class="boton" value="72" id="H2a">H2</button></td>
+                    <td><button class="boton" value="73" id="H3a">H3</button></td>
+                    <td><button class="boton" value="74" id="H4a">H4</button></td>
+                    <td><button class="boton" value="75" id="H5a">H5</button></td>
+                    <td><button class="boton" value="76" id="H6a">H6</button></td>
+                    <td><button class="boton" value="77" id="H7a">H7</button></td>
+                    <td><button class="boton" value="78" id="H8a">H8</button></td>
+                    <td><button class="boton" value="79" id="H9a">H9</button></td>
+                    <td><button class="boton" value="80" id="H10a">H10</button></td>
+                </tr>
+                <tr>
+                    <td><button class="boton" value="81" id="I1a">I1</button></td>
+                    <td><button class="boton" value="82" id="I2a">I2</button></td>
+                    <td><button class="boton" value="83" id="I3a">I3</button></td>
+                    <td><button class="boton" value="84" id="I4a">I4</button></td>
+                    <td><button class="boton" value="85" id="I5a">I5</button></td>
+                    <td><button class="boton" value="86" id="I6a">I6</button></td>
+                    <td><button class="boton" value="87" id="I7a">I7</button></td>
+                    <td><button class="boton" value="88" id="I8a">I8</button></td>
+                    <td><button class="boton" value="89" id="I9a">I9</button></td>
+                    <td><button class="boton" value="90" id="I10a">I10</button></td>
+                </tr>
+                <tr>
+                    <td><button class="boton" value="91" id="J1a">J1</button></td>
+                    <td><button class="boton" value="92" id="J2a">J2</button></td>
+                    <td><button class="boton" value="93" id="J3a">J3</button></td>
+                    <td><button class="boton" value="94" id="J4a">J4</button></td>
+                    <td><button class="boton" value="95" id="J5a">J5</button></td>
+                    <td><button class="boton" value="96" id="J6a">J6</button></td>
+                    <td><button class="boton" value="97" id="J7a">J7</button></td>
+                    <td><button class="boton" value="98" id="J8a">J8</button></td>
+                    <td><button class="boton" value="99" id="J9a">J9</button></td>
+                    <td><button class="boton" value="100" id="J10a">J10</button></td>
+                </tr>
+            </table>
+        <h2>Coloca tus barcos en este tablero</h2>
+        <table id="defensa">
+            <tr>
+                <td><button class="boton" value="101" id="A1d">A1</button></td>
+                <td><button class="boton" value="102" id="A2d">A2</button></td>
+                <td><button class="boton" value="103" id="A3d">A3</button></td>
+                <td><button class="boton" value="104" id="A4d">A4</button></td>
+                <td><button class="boton" value="105" id="A5d">A5</button></td>
+                <td><button class="boton" value="106" id="A6d">A6</button></td>
+                <td><button class="boton" value="107" id="A7d">A7</button></td>
+                <td><button class="boton" value="108" id="A8d">A8</button></td>
+                <td><button class="boton" value="109" id="A9d">A9</button></td>
+                <td><button class="boton" value="110" id="A10d">A10</button></td>
+            </tr>
+            <tr>
+                <td><button class="boton" value="111" id="B1d">B1</button></td>
+                <td><button class="boton" value="112" id="B2d">B2</button></td>
+                <td><button class="boton" value="113" id="B3d">B3</button></td>
+                <td><button class="boton" value="114" id="B4d">B4</button></td>
+                <td><button class="boton" value="115" id="B5d">B5</button></td>
+                <td><button class="boton" value="116" id="B6d">B6</button></td>
+                <td><button class="boton" value="117" id="B7d">B7</button></td>
+                <td><button class="boton" value="118" id="B8d">B8</button></td>
+                <td><button class="boton" value="119" id="B9d">B9</button></td>
+                <td><button class="boton" value="120" id="B10d">B10</button></td>
+            </tr>
+            <tr>
+                <td><button class="boton" value="121" id="C1d">C1</button></td>
+                <td><button class="boton" value="122" id="C2d">C2</button></td>
+                <td><button class="boton" value="123" id="C3d">C3</button></td>
+                <td><button class="boton" value="124" id="C4d">C4</button></td>
+                <td><button class="boton" value="125" id="C5d">C5</button></td>
+                <td><button class="boton" value="126" id="C6d">C6</button></td>
+                <td><button class="boton" value="127" id="C7d">C7</button></td>
+                <td><button class="boton" value="128" id="C8d">C8</button></td>
+                <td><button class="boton" value="129" id="C9d">C9</button></td>
+                <td><button class="boton" value="130" id="C10d">C10</button></td>
+            </tr>
+            <tr>
+                <td><button class="boton" value="131" id="D1d">D1</button></td>
+                <td><button class="boton" value="132" id="D2d">D2</button></td>
+                <td><button class="boton" value="133" id="D3d">D3</button></td>
+                <td><button class="boton" value="134" id="D4d">D4</button></td>
+                <td><button class="boton" value="135" id="D5d">D5</button></td>
+                <td><button class="boton" value="136" id="D6d">D6</button></td>
+                <td><button class="boton" value="137" id="D7d">D7</button></td>
+                <td><button class="boton" value="138" id="D8d">D8</button></td>
+                <td><button class="boton" value="139" id="D9d">D9</button></td>
+                <td><button class="boton" value="140" id="D10d">D10</button></td>
+            </tr>
+            <tr>
+                <td><button class="boton" value="141" id="E1d">E1</button></td>
+                <td><button class="boton" value="142" id="E2d">E2</button></td>
+                <td><button class="boton" value="143" id="E3d">E3</button></td>
+                <td><button class="boton" value="144" id="E4d">E4</button></td>
+                <td><button class="boton" value="145" id="E5d">E5</button></td>
+                <td><button class="boton" value="146" id="E6d">E6</button></td>
+                <td><button class="boton" value="147" id="E7d">E7</button></td>
+                <td><button class="boton" value="148" id="E8d">E8</button></td>
+                <td><button class="boton" value="149" id="E9d">E9</button></td>
+                <td><button class="boton" value="150" id="E10d">E10</button></td>
+            </tr>
+            <tr>
+                <td><button class="boton" value="151" id="F1d">F1</button></td>
+                <td><button class="boton" value="152" id="F2d">F2</button></td>
+                <td><button class="boton" value="153" id="F3d">F3</button></td>
+                <td><button class="boton" value="154" id="F4d">F4</button></td>
+                <td><button class="boton" value="155" id="F5d">F5</button></td>
+                <td><button class="boton" value="156" id="F6d">F6</button></td>
+                <td><button class="boton" value="157" id="F7d">F7</button></td>
+                <td><button class="boton" value="158" id="F8d">F8</button></td>
+                <td><button class="boton" value="159" id="F9d">F9</button></td>
+                <td><button class="boton" value="160" id="F10d">F10</button></td>
+            </tr>
+            <tr>
+                <td><button class="boton" value="161" id="G1d">G1</button></td>
+                <td><button class="boton" value="162" id="G2d">G2</button></td>
+                <td><button class="boton" value="163" id="G3d">G3</button></td>
+                <td><button class="boton" value="164" id="G4d">G4</button></td>
+                <td><button class="boton" value="165" id="G5d">G5</button></td>
+                <td><button class="boton" value="166" id="G6d">G6</button></td>
+                <td><button class="boton" value="167" id="G7d">G7</button></td>
+                <td><button class="boton" value="168" id="G8d">G8</button></td>
+                <td><button class="boton" value="169" id="G9d">G9</button></td>
+                <td><button class="boton" value="170" id="G10d">G10</button></td>
+            </tr>
+            <tr>
+                <td><button class="boton" value="171" id="H1d">H1</button></td>
+                <td><button class="boton" value="172" id="H2d">H2</button></td>
+                <td><button class="boton" value="173" id="H3d">H3</button></td>
+                <td><button class="boton" value="174" id="H4d">H4</button></td>
+                <td><button class="boton" value="175" id="H5d">H5</button></td>
+                <td><button class="boton" value="176" id="H6d">H6</button></td>
+                <td><button class="boton" value="177" id="H7d">H7</button></td>
+                <td><button class="boton" value="178" id="H8d">H8</button></td>
+                <td><button class="boton" value="179" id="H9d">H9</button></td>
+                <td><button class="boton" value="180" id="H10d">H10</button></td>
+            </tr>
+            <tr>
+                <td><button class="boton" value="181" id="I1d">I1</button></td>
+                <td><button class="boton" value="182" id="I2d">I2</button></td>
+                <td><button class="boton" value="183" id="I3d">I3</button></td>
+                <td><button class="boton" value="184" id="I4d">I4</button></td>
+                <td><button class="boton" value="185" id="I5d">I5</button></td>
+                <td><button class="boton" value="186" id="I6d">I6</button></td>
+                <td><button class="boton" value="187" id="I7d">I7</button></td>
+                <td><button class="boton" value="188" id="I8d">I8</button></td>
+                <td><button class="boton" value="189" id="I9d">I9</button></td>
+                <td><button class="boton" value="190" id="I10d">I10</button></td>
+            </tr>
+            <tr>
+                <td><button class="boton" value="191" id="F1d">F1</button></td>
+                <td><button class="boton" value="192" id="F2d">F2</button></td>
+                <td><button class="boton" value="193" id="F3d">F3</button></td>
+                <td><button class="boton" value="194" id="F4d">F4</button></td>
+                <td><button class="boton" value="195" id="F5d">F5</button></td>
+                <td><button class="boton" value="196" id="F6d">F6</button></td>
+                <td><button class="boton" value="197" id="F7d">F7</button></td>
+                <td><button class="boton" value="198" id="F8d">F8</button></td>
+                <td><button class="boton" value="199" id="F9d">F9</button></td>
+                <td><button class="boton" value="200" id="F10d">F10</button></td>
+            </tr>
+        </table>
+
+       <!--1. Se quiere realizar un hundir la flota modesto en JavaScript para ello se van crear dos
+matrices 10x10 (representadas por dos tablas): una a izquierda y otra a derecha. La
+de la izquierda es la que el usuario posicionará sus barcos escribiendo x y la de la
+derecha se posicionarán los barcos automáticamente puesto que es el de la
+máquina. Los barcos que se pueden poner son los siguientes:
+○ 1 barco de 4 cuadrados
+○ 2 barcos de 3 cuadrados
+○ 3 barcos de 2 cuadrados
+○ 4 barcos de un cuadrado
+Los pasos a seguir
+○ Crear una matriz para jugar el jugador, dónde se almacenan los barcos que
+teclea el jugador mediante un input y tecleando x. No están permitidos otros
+símbolos (se debe comprobar)
+○ Crear una matriz que se genere de forma aleatoria los barcos que debe
+poner la máquina y que se representa mediante una tabla con botones.
+○ Poder teclear los botones para ver si hay agua o barco. Si hay barco
+descubrir la casilla oportuna. sino que salga un mensaje de agua.
+○ Comprobar automáticamente después como el turno del ordenador. ¿como hacerlo?-->
+
+</body>
+</html>
+

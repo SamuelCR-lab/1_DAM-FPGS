@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>javascript Ejercicios</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="ejerciciosEventos.js"></script>
+  <style>
+    #Caja{
+      width:200px; 
+      height:100px; 
+      background-color:lightgray; 
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+<h1>Ejercicio 1</h1>
+<button id="numeroAleatorio">Generar número aleatorio</button>
+<div id="mostrarNumero"></div>
+<h1>Ejercicio 2</h1>
+    <form>
+        Número para la cuenta atras:<input type="number" id="tiempo" value="0">
+        <button id="cuentaAtras"></button>
+    </form>
+<h1>Ejercicio 3</h1>
+<table id="tabla" border="1">
+  <tr>
+    <td id="1">1</td>
+    <td id="2">2</td>
+    <td id="3">3</td>
+  </tr>
+  <tr>
+    <td id="4">4</td>
+    <td id="5">5</td>
+    <td id="6">6</td>
+  </tr>
+  <tr>
+    <td id="7">7</td>
+    <td id="8">8</td>
+    <td id="9">9</td>
+  </tr>
+</table>
+<table id="tabla2" border="1">
+  <tr>
+    <td id="1">1</td>
+    <td id="2">2</td>
+    <td id="3">3</td>
+  </tr>
+  <tr>
+    <td id="4">4</td>
+    <td id="5">5</td>
+    <td id="6">6</td>
+  </tr>
+  <tr>
+    <td id="7">7</td>
+    <td id="8">8</td>
+    <td id="9">9</td>
+  </tr>
+</table>
+<button id="rellenar">Rellenar Tabla</button>
+<h1>Ejercicio 4</h1>
+<div id="Caja">Pasa el ratón por aquí</div>
+<h1>Ejercicio 5</h1>
+<div id="letrasEjec5">
+<button id="a">A</button>
+<button id="b">B</button>
+<button id="c">C</button>
+<button id="d">D</button>
+<button id="e">E</button>
+<button id="f">F</button>
+<button id="g">G</button>
+<button id="h">H</button>
+<button id="i">I</button>
+<button id="j">J</button>
+<button id="k">K</button>
+<button id="l">L</button>
+<button id="m">M</button>
+<button id="n">N</button>
+<button id="o">O</button>
+<button id="p">P</button>
+<button id="q">q</button>
+<button id="r">R</button>
+<button id="s">S</button>
+<button id="t">T</button>
+<button id="v">V</button>
+<button id="w">W</button>
+<button id="x">X</button>
+<button id="y">Y</button>
+<button id="z">Z</button>
+</div>
+<!--DISABLED PARA DESHABILITAR LOS BOTONES O LETRAS ERRONEAS, ES hacer un array, obtener un numero 0-2-->
+<h1>¿Adivina donde esta?</h1>
+<table id="tablaAdivinanza" border="1">
+  <tr>
+    <td id="1"></td>
+    <td id="2"></td>
+    <td id="3"></td>
+  </tr>
+  <tr>
+    <td id="4"></td>
+    <td id="5"></td>
+    <td id="6"></td>
+  </tr>
+  <tr>
+    <td id="7"></td>
+    <td id="8"></td>
+    <td id="9"></td>
+  </tr>
+
+</table>
+<h1>Formulario basico</h1>
+<!-- Crea un botón que inicie un contador empezando por el 1 y cada vez que se
+le da a ese botón se incrementa el tiempo, si es la segunda vez por dos, si es la
+tercera por 3 así sucesivamente… y otro botón que al darle inicia el contador
+otra vez a cero. .(1,75 puntos)-->
+<form id="formularioBasico">
+  <label for="nombre">Nombre:</label><br>
+  <input type="text" id="nombre" name="nombre"><br>
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email"><br>
+  <input type="submit" value="Enviar">
+</form>
+</body>
+</html>
