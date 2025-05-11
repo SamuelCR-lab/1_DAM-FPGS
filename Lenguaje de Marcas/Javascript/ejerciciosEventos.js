@@ -30,7 +30,7 @@ function generarPalabra(){
   let arrpalabras = ["perro", "gato", "coche", "movil", "madrid", "tortuga", "caiman"];
   return palabraElegida = palabras[random(arrpalabras.length)];
 }
-function palabraRandom(){
+function palabraRandom(event){
   let contador=0;
   
   

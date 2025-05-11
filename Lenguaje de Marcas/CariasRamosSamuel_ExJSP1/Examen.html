@@ -2,35 +2,57 @@
 <html lang="en">
   <head>
     <title>EXAMEN DE JAVASCRIPT</title>
-      <script src="./script.js"></script>
+      <script src="script.js"></script>
   </head>
   <body>
-    <h2>Ejercicio 1</h2>
+    <h2>Ejercicio 1 Comprobacion y Calculo de Repostaje</h2>
     <form action="">
-      Matricula del coche: <input type="text" id="Matricula"><br>
-      Litros del tanque de combustible: <input type="number" id="Litros"><br>
-      <div id="matriculaComprobada"></div>
-      <div id="calculoRepostaje"></div>
-      <input type="button" value="Enviar" onclick="comprobarMatricula()">
+      <label for="Matricula">Matricula del coche: </label> 
+      <input type="text" id="Matricula" name="Litros"><br><br>
+      <label for="Litros"> Litros del tanque de combustible: </label>
+      <input type="number" id="Litros" name="Litros"><br><br>
+      <p id="matriculaComprobada"></p>
+      <p id="calculoRepostaje"></p>
+      <input id="Calcular" type="button" value="Enviar para Calcular">
     </form>
 
 
-    <!--<h2>Ejercicio 2</h2>-->
-
-
-
-    <h2>Ejercicio 3</h2>
-    <table border="1">
-      <td>
-        <tr>1</tr>
-        <tr>1</tr>
-        <tr>1</tr>
-      </td>
+    <h2>Ejercicio 2</h2>
+    <!--Crea una tabla 3x3 dónde se rellene de letras aleatorias del abecedario, se generará
+un número y una letra y hay que darle a las letras que son tantas veces como
+indique el número. Hay que asegurarse que el número de letra está en la matriz-->
+    <table>
+      <tr><button class="letraAleatoria" value="1">1</button></tr>
+      <tr><button class="letraAleatoria" value="2">2</button></tr>
+      <tr><button class="letraAleatoria" value="3">3</button></tr>
+      <tr><button class="letraAleatoria" value="4">4</button></tr>
+      <tr><button class="letraAleatoria" value="5">5</button></tr>
+      <tr><button class="letraAleatoria" value="6">6</button></tr>
+      <tr><button class="letraAleatoria" value="7">7</button></tr>
+      <tr><button class="letraAleatoria" value="8">8</button></tr>
+      <tr><button class="letraAleatoria" value="9">9</button></tr>
     </table>
+    <!-- El juego de los trileros. Dados tres botones ubicados en una tabla con una sola fila
+que se vinculan con un array, genera aleatoriamente una posición donde está la
+bola y el usuario la tiene que adivinar dándole al botón cree que está. Si no está se
+bloquea el botón, y si está nuestra la bola representada por una o.-->
+
+    <h2>Ejercicio 3 Trileros</h2>
+      <td>
+        <tr><button class="Trileros" value="1">1</button></tr>
+        <tr><button class="Trileros" value="2">2</button></tr>
+        <tr><button class="Trileros" value="3">3</button></tr>
+        <p id="resultado"></p>
+      </td>
 
 
-    <!--<h2>Ejercicio 4</h2>-->
 
+    <h2>Ejercicio 4</h2>
+      <!--Crea un contador de colores, los colores son los siguientes 0: azul, 1: amarillo; 2: verde,
+3 : naranja, 4: rosa, 5: morado, 6: marron, 7: cyan, 8: turquesa, 9; gris. Se tiene un
+contador que va cambiando solo y cuando las terminaciones coinciden con los
+números de la lista el fondo cambia de color. Los colores paran cuando se da al
+boton stop.-->
 
 
 
